@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 import numpy as np
 import pandas as pd
@@ -30,7 +30,7 @@ def json_ready(obj: Any) -> Any:
 def save_json(path: str | Path, payload: Any) -> Path:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(json_ready(payload), indent=2, sort_keys=True))
+    path.write_text(json.dumps(json_ready(payload), indent=2, sort_keys=True), encoding="utf-8")
     return path
 
 
@@ -49,11 +49,76 @@ def load_npz(path: str | Path):
     return np.load(Path(path), allow_pickle=True)
 
 
-def save_csv(path: str | Path, frame: pd.DataFrame) -> Path:
+def save_csv(path: str | Path, frame: pd.DataFrame | Iterable[dict[str, Any]]) -> Path:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(frame).to_csv(path, index=False)
     return path
+
+
+def figure_paths_from_name(fig_dir: str | Path, filename_or_stem: str | Path) -> tuple[Path, Path, str]:
+    name = str(filename_or_stem)
+    path = Path(name)
+    stem = path.stem if path.suffix else name
+    fig_dir = Path(fig_dir)
+    return fig_dir / f"{stem}.png", fig_dir / f"{stem}.pdf", stem
+
+
+def save_figure(
+    fig,
+    fig_dir: str | Path,
+    filename_or_stem: str | Path,
+    *,
+    dpi: int = 300,
+    write_pdf: bool = True,
+    bbox_inches: str = "tight",
+    pad_inches: float = 0.025,
+) -> Path:
+    png_path, pdf_path, _ = figure_paths_from_name(fig_dir, filename_or_stem)
+    png_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(png_path, dpi=dpi, bbox_inches=bbox_inches, pad_inches=pad_inches)
+    if write_pdf:
+        fig.savefig(pdf_path, bbox_inches=bbox_inches, pad_inches=pad_inches)
+    return png_path
+
+
+def save_paper_table(path_stem: str | Path, frame: pd.DataFrame, *, index: bool = False) -> tuple[Path, Path, Path]:
+    path_stem = Path(path_stem)
+    path_stem.parent.mkdir(parents=True, exist_ok=True)
+    table = pd.DataFrame(frame)
+    csv_path = path_stem.with_suffix(".csv")
+    tex_path = path_stem.with_suffix(".tex")
+    md_path = path_stem.with_suffix(".md")
+    table.to_csv(csv_path, index=index)
+    tex_path.write_text(table.to_latex(index=index, escape=False, float_format=lambda x: f"{x:.4g}"), encoding="utf-8")
+    md_path.write_text(table.to_markdown(index=index), encoding="utf-8")
+    return csv_path, tex_path, md_path
+
+
+def display_saved_figure(path: str | Path, *, width: int | None = None) -> Path:
+    from IPython.display import Image, display
+
+    path = Path(path)
+    display(Image(filename=str(path), width=width))
+    return path
+
+
+def display_saved_figures(paths: Iterable[str | Path], *, width: int | None = None) -> list[Path]:
+    displayed = []
+    for path in paths:
+        displayed.append(display_saved_figure(path, width=width))
+    return displayed
+
+
+def display_table(frame: pd.DataFrame, columns: list[str] | None = None, n: int = 10) -> pd.DataFrame:
+    from IPython.display import display
+
+    preview = pd.DataFrame(frame)
+    if columns is not None:
+        preview = preview.loc[:, columns]
+    preview = preview.head(n)
+    display(preview)
+    return preview
 
 
 def save_pt(path: str | Path, payload: Any) -> Path:

@@ -9,6 +9,8 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+from .artifacts import json_ready, save_csv, save_json
+
 
 @dataclass(frozen=True)
 class Section51Config:
@@ -79,38 +81,6 @@ def make_section51_config(project_root: str | Path | None = None) -> Section51Co
         eb_max_cells_per_time=int(os.environ.get("CH05_EB_MAX_CELLS_PER_TIME", "900")),
         device=torch.device(os.environ.get("CH05_DEVICE", "cuda" if torch.cuda.is_available() else "cpu")),
     )
-
-
-def json_ready(obj):
-    if isinstance(obj, Path):
-        return str(obj)
-    if isinstance(obj, np.integer):
-        return int(obj)
-    if isinstance(obj, np.floating):
-        return float(obj)
-    if isinstance(obj, np.ndarray):
-        return obj.tolist()
-    if isinstance(obj, pd.DataFrame):
-        return obj.to_dict(orient="records")
-    if isinstance(obj, dict):
-        return {str(k): json_ready(v) for k, v in obj.items()}
-    if isinstance(obj, (list, tuple)):
-        return [json_ready(v) for v in obj]
-    return obj
-
-
-def save_json(path: str | Path, payload) -> Path:
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(json_ready(payload), indent=2, sort_keys=True))
-    return path
-
-
-def save_csv(path: str | Path, frame: pd.DataFrame) -> Path:
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    frame.to_csv(path, index=False)
-    return path
 
 
 def build_main_suite_figure(summary: pd.DataFrame, fig_dir: str | Path, filename: str = "fig_5_1_main_suite.png") -> Path:

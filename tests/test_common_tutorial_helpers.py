@@ -57,6 +57,34 @@ def test_artifact_helpers_validate_arrays_paths_and_hashes(tmp_path):
         ensure_finite("bad", np.asarray([np.nan]))
 
 
+def test_artifact_helpers_save_figures_and_paper_tables(tmp_path):
+    import matplotlib.pyplot as plt
+
+    from src.artifacts import figure_paths_from_name, save_figure, save_paper_table
+
+    fig_dir = tmp_path / "figures"
+    png_path, pdf_path, stem = figure_paths_from_name(fig_dir, "example_plot.png")
+    assert stem == "example_plot"
+    assert png_path == fig_dir / "example_plot.png"
+    assert pdf_path == fig_dir / "example_plot.pdf"
+
+    fig, ax = plt.subplots()
+    ax.plot([0, 1], [1, 0])
+    saved_png = save_figure(fig, fig_dir, "example_plot.png", dpi=72, write_pdf=True)
+    plt.close(fig)
+    assert saved_png == png_path
+    assert png_path.exists() and png_path.stat().st_size > 0
+    assert pdf_path.exists() and pdf_path.stat().st_size > 0
+
+    csv_path, tex_path, md_path = save_paper_table(
+        tmp_path / "tables" / "summary",
+        pd.DataFrame({"metric": ["mmd"], "value": [0.125]}),
+    )
+    assert csv_path.read_text().splitlines()[0] == "metric,value"
+    assert "mmd" in tex_path.read_text()
+    assert "mmd" in md_path.read_text()
+
+
 def test_flow_runtime_euler_helpers_preserve_zero_velocity():
     torch = pytest.importorskip("torch")
 
