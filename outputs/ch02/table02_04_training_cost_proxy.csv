@@ -1,2 +1,2 @@
 method,n_steps,batch_size,mean_time_per_step_ms,median_time_per_step_ms,nfe_per_step_mean,nfe_per_step_median,total_wall_time_sec,final_loss,final_distribution_mmd,notes
-solver-in-the-loop Neural ODE training proxy,100,256,16.66929580271244,16.392774879932404,16.0,16.0,1.6853241212666035,0.011843204498291016,0.0007868466578970779,Pedagogical proxy: backpropagates through a differentiable Euler ODE rollout with MMD loss; no likelihood or divergence tracking.
+solver-in-the-loop Neural ODE training proxy,100,256,16.347254663705826,16.18899032473564,16.0,16.0,1.6512390710413456,0.011843204498291016,0.0007868466578970779,Pedagogical proxy: backpropagates through a differentiable Euler ODE rollout with MMD loss; no likelihood or divergence tracking.

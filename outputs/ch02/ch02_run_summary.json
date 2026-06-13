@@ -1,7 +1,7 @@
 {
-  "cnf_proxy_mean_step_time_ms": 16.66929580271244,
+  "cnf_proxy_mean_step_time_ms": 16.347254663705826,
   "cnf_proxy_nfe_per_step": 16.0,
-  "cnf_proxy_total_wall_time_sec": 1.6853241212666035,
+  "cnf_proxy_total_wall_time_sec": 1.6512390710413456,
   "concept_boundaries": [
     "OT endpoint relation is model-implied, not observed lineage.",
     "Path energy is computed in PC-20.",
@@ -39,8 +39,6 @@
     "figures/ch02/fig02_04b_path_construction_fixed_endpoints.svg",
     "figures/ch02/fig02_04c_pc20_action_proxy.png",
     "figures/ch02/fig02_04c_pc20_action_proxy.svg",
-    "figures/ch02/fig02_06a_cnf_control_flow.png",
-    "figures/ch02/fig02_06a_cnf_control_flow.svg",
     "figures/ch02/fig02_06b_mean_step_time.png",
     "figures/ch02/fig02_06b_mean_step_time.svg",
     "figures/ch02/fig02_06c_velocity_evaluations_per_step.png",
@@ -57,7 +55,7 @@
     "outputs/ch02/table02_04_training_cost_proxy.csv"
   ],
   "quick_mode": true,
-  "runtime_sec": 28.10763578861952,
+  "runtime_sec": 26.718052243813872,
   "seed": 42,
   "sinkhorn_backend_main_epsilon": "pot",
   "source_time": "1",

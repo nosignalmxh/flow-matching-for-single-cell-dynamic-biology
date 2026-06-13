@@ -37,8 +37,8 @@ NOTEBOOKS = {
     "05_2_perturbation_response_sciplex.ipynb": {
         "min_code_cells": 11,
         "must_display": [
-            "fig_5_3_sciplex_heldout_compound_summary.png",
-            "fig_5_3_sciplex_heldout_compound.png",
+            "fig_5_2_heldout_highest_dose_metrics",
+            "fig_5_2_heldout_compound_metrics",
         ],
     },
 }

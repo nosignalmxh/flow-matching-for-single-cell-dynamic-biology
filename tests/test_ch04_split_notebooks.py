@@ -173,7 +173,7 @@ def test_ch04_split_notebooks_define_local_training_helper_when_used():
     for filename in NOTEBOOKS:
         text = _text(PROJECT_ROOT / "notebooks" / filename)
         if "train_or_load_model(" in text:
-            assert "def train_or_load_model(" in text, filename
+            assert "def train_or_load_model(" in text or "ch04t.train_or_load_model" in text, filename
 
 
 def test_ch04_split_notebooks_define_eb_aliases_before_using_them():

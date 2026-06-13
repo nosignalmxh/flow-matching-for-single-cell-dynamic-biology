@@ -98,9 +98,9 @@
   },
   "nfe": 32,
   "paths": {
-    "figures": "/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/figures/ch05/new2",
-    "outputs": "/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/outputs/ch05",
-    "tables": "/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/tables/ch05"
+    "figures": "/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/figures/ch05/new2",
+    "outputs": "/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/outputs/ch05",
+    "tables": "/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/tables/ch05"
   },
   "quick_mode": false,
   "rdkit2d": {
@@ -109,7 +109,7 @@
     "external_smiles_failure_count": 0,
     "lincs_invalid_count": 31046,
     "lincs_smiles_count": 20329,
-    "lincs_smiles_path": "/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/chemcpa_lincs_smiles/lincs_smiles.csv",
+    "lincs_smiles_path": "/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/chemcpa_lincs_smiles/lincs_smiles.csv",
     "n_external_smiles": 20329,
     "n_query_smiles": 8,
     "nan_inf_count": 75,
@@ -322,10 +322,10 @@
     "heldout_compound": "Alisertib (MLN8237)",
     "heldout_compound_reason": "fallback_most_cells",
     "paths": {
-      "adata": "/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/sciplex3_a549/sciplex3_a549_hvg_top1000.h5ad",
-      "cell_counts": "/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/sciplex3_a549/compound_dose_cell_counts.csv",
-      "metadata": "/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/sciplex3_a549/metadata.csv",
-      "summary": "/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/sciplex3_a549/data_cache_summary.json"
+      "adata": "/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/sciplex3_a549/sciplex3_a549_hvg_top1000.h5ad",
+      "cell_counts": "/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/sciplex3_a549/compound_dose_cell_counts.csv",
+      "metadata": "/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/sciplex3_a549/metadata.csv",
+      "summary": "/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/sciplex3_a549/data_cache_summary.json"
     },
     "pca_explained_variance": {
       "Split B held-out highest dose": [

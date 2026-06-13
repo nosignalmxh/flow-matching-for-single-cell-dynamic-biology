@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-06-04T19:25:19.205541</dc:date>
+    <dc:date>2026-06-08T14:08:02.452371</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -40,7 +40,7 @@ Q 13.8672 64.084837 13.8672 68.894437
 L 13.8672 112.180837 
 Q 13.8672 116.990437 20.5344 116.990437 
 z
-" clip-path="url(#pfddb4a0c8a)" style="fill: #f5f5f5; stroke: #444444; stroke-linejoin: miter"/>
+" clip-path="url(#pa33a34bf9a)" style="fill: #f5f5f5; stroke: #444444; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 110.5416 116.990437 
@@ -53,7 +53,7 @@ Q 103.8744 64.084837 103.8744 68.894437
 L 103.8744 112.180837 
 Q 103.8744 116.990437 110.5416 116.990437 
 z
-" clip-path="url(#pfddb4a0c8a)" style="fill: #f5f5f5; stroke: #444444; stroke-linejoin: miter"/>
+" clip-path="url(#pa33a34bf9a)" style="fill: #f5f5f5; stroke: #444444; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 217.2168 116.990437 
@@ -66,7 +66,7 @@ Q 210.5496 64.084837 210.5496 68.894437
 L 210.5496 112.180837 
 Q 210.5496 116.990437 217.2168 116.990437 
 z
-" clip-path="url(#pfddb4a0c8a)" style="fill: #f5f5f5; stroke: #444444; stroke-linejoin: miter"/>
+" clip-path="url(#pa33a34bf9a)" style="fill: #f5f5f5; stroke: #444444; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 110.5416 213.182437 
@@ -79,7 +79,7 @@ Q 103.8744 160.276837 103.8744 165.086437
 L 103.8744 208.372837 
 Q 103.8744 213.182437 110.5416 213.182437 
 z
-" clip-path="url(#pfddb4a0c8a)" style="fill: #f5f5f5; stroke: #444444; stroke-linejoin: miter"/>
+" clip-path="url(#pa33a34bf9a)" style="fill: #f5f5f5; stroke: #444444; stroke-linejoin: miter"/>
    </g>
    <g id="text_1">
     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="55.5372" y="93.021075" transform="rotate(-0 55.5372 93.021075)">sample x0</text>
@@ -145,7 +145,7 @@ L 151.36607 119.235032
   </g>
  </g>
  <defs>
-  <clipPath id="pfddb4a0c8a">
+  <clipPath id="pa33a34bf9a">
    <rect x="7.2" y="20.798437" width="333.36" height="240.48"/>
   </clipPath>
  </defs>

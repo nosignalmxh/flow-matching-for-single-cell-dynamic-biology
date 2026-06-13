@@ -102,7 +102,7 @@ def test_section51_notebook_is_tutorial_style_and_keeps_core_experiment_visible(
         "## 7. Roll out predictions",
         "## 8. Compute endpoint metrics",
         "## 9. Compute hand-off diagnostics",
-        "## 12. Display Figure 5.1",
+        "## 12. Redraw Figure 5.1 as independent paper panels",
         "## 14. Final audit",
     ]:
         assert required in text
@@ -120,6 +120,10 @@ def test_section51_notebook_is_tutorial_style_and_keeps_core_experiment_visible(
         assert required_core_step in text
 
     assert "display_png(figure_path)" in text
+    assert "from src.ch05_section51_figures import" in text
+    assert "_fig5_1_metric_table" not in text
+    assert "_fig5_1_draw_metric_bars" not in text
+    assert "_fig5_1_crop_white_margin" not in text
     assert len(code_lengths) >= 18
     assert max(code_lengths) <= 90
 

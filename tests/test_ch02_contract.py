@@ -8,6 +8,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RUNNER_PATH = PROJECT_ROOT / "scripts" / "run_ch02_distribution_transport.py"
 NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "02_distribution_transport_before_fm.ipynb"
+TUTORIAL_HELPER_PATH = PROJECT_ROOT / "src" / "ch02_tutorial.py"
 
 
 def _load_runner():
@@ -71,7 +72,7 @@ def test_ch02_notebook_is_paper_facing_reproducibility_notebook():
     ]:
         assert required in code_text
     assert "table02_01_coupling_diagnostics.csv" in text
-    assert "fig02_04d_pc20_action_proxy" in text
+    assert "fig02_04c_pc20_action_proxy" in text
     assert "table02_04_cnf_training_bottleneck.csv" in text
     assert "table02_optional_ot_cost_sensitivity.csv" in text
 
@@ -84,28 +85,33 @@ def test_ch02_notebook_has_second_round_tutorial_quality_gates():
         if cell.get("cell_type") == "code"
     ]
     code_text = "\n".join(code_sources)
+    helper_source = TUTORIAL_HELPER_PATH.read_text()
     max_code_lines = max(len(source.splitlines()) for source in code_sources)
 
-    assert len(code_sources) >= 45
+    assert len(code_sources) >= 44
     assert max_code_lines <= 60
     assert "expected_figures" in code_text
     assert "expected_tables" in code_text
     assert "expected_outputs" in code_text
-    assert "raise FileNotFoundError" in code_text
+    assert "write_artifact_manifest(" in code_text
+    assert "raise FileNotFoundError" in helper_source
 
     display_markers = [
         "display(Image(",
         "display_saved_figure(",
         "display_saved_figures(",
         "display_png(",
+        "show_saved_png(",
     ]
     assert any(marker in code_text for marker in display_markers)
     assert "display_table(" in code_text or "display(" in code_text
 
     assert "plt.subplots(2, 2" not in code_text
     assert "plt.subplots(1, 4" not in code_text
-    assert "panel_level_one_plot_per_cell" in code_text
-    assert 'for suffix in [".png", ".svg"]' in code_text
+    assert "figure_layout" in code_text
+    assert "section6_three_separate_panel_artifacts" in code_text
+    assert "build_expected_artifact_paths(" in code_text
+    assert 'figure_suffixes: Iterable[str] = (".png", ".svg")' in helper_source
     assert "Independent: geometry ignored" in code_text
     assert "Sinkhorn OT: PC-20 cost-guided" in code_text
     assert "Coarse transport blocks" in code_text
@@ -117,6 +123,8 @@ def test_ch02_notebook_has_second_round_tutorial_quality_gates():
     assert "Epsilon trade-off" in code_text
     assert "PHATE display only" in code_text
     assert "chosen eps=0.05" in code_text
+    assert "fig02_06a_cnf_control_flow" not in code_text
+    assert "box_specs" not in code_text
     assert "A. Independent" not in code_text
     assert "B. Sinkhorn" not in code_text
     assert "C. Soft" not in code_text
@@ -133,11 +141,9 @@ def test_ch02_notebook_has_second_round_tutorial_quality_gates():
         "fig02_03b_straight_bridges",
         "fig02_03c_curved_bridges",
         "fig02_03d_stochastic_bridge_samples",
-        "fig02_04a_eb_empirical_density_path",
-        "fig02_04b_adjacent_time_barycentric_ot",
-        "fig02_04c_economical_vs_detour_paths",
-        "fig02_04d_pc20_action_proxy",
-        "fig02_06a_cnf_control_flow",
+        "fig02_04a_fixed_endpoint_pairs",
+        "fig02_04b_path_construction_fixed_endpoints",
+        "fig02_04c_pc20_action_proxy",
         "fig02_06b_mean_step_time",
         "fig02_06c_velocity_evaluations_per_step",
         "fig02_06d_total_wall_clock_time",
@@ -175,11 +181,9 @@ def test_ch02_expected_artifacts_exist():
         "fig02_03b_straight_bridges",
         "fig02_03c_curved_bridges",
         "fig02_03d_stochastic_bridge_samples",
-        "fig02_04a_eb_empirical_density_path",
-        "fig02_04b_adjacent_time_barycentric_ot",
-        "fig02_04c_economical_vs_detour_paths",
-        "fig02_04d_pc20_action_proxy",
-        "fig02_06a_cnf_control_flow",
+        "fig02_04a_fixed_endpoint_pairs",
+        "fig02_04b_path_construction_fixed_endpoints",
+        "fig02_04c_pc20_action_proxy",
         "fig02_06b_mean_step_time",
         "fig02_06c_velocity_evaluations_per_step",
         "fig02_06d_total_wall_clock_time",

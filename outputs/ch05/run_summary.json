@@ -1198,7 +1198,7 @@
     "does_skip_2to1_beat_pairwise_on_hidden_t2": true,
     "does_skip_2to1_degrade_hidden_t2_vs_adjacent_only": true,
     "figure": "figures/ch05/fig_5_1_main_suite.png",
-    "figure_5_1_redrawn_error_bars": "Quantitative panels use mean \u00b1 SEM across seed-level rows from tab_5_1_main_suite.csv and tab_5_1_main_suite_diag.csv.",
+    "figure_5_1_redrawn_error_bars": "Quantitative panels use mean +/- SEM across seed-level rows from tab_5_1_main_suite.csv and tab_5_1_main_suite_diag.csv.",
     "figure_5_1_redrawn_missing_entries": [],
     "figure_5_1_redrawn_panel_sources": [
       {
