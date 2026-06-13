@@ -18,8 +18,8 @@ def test_median_positive_scale_ignores_zeros_and_falls_back_to_one():
     assert median_positive_scale(np.zeros((2, 2), dtype=np.float32)) == 1.0
 
 
-def test_ch02_tutorial_helpers_cover_reusable_transport_math():
-    from src.ch02_tutorial import (
+def test_transport_reporting_helpers_cover_reusable_transport_math():
+    from src.transport_reporting import (
         action_per_pair_pc,
         brownian_bridge_trajectories,
         coupling_diagnostic_row,
@@ -70,7 +70,7 @@ def test_ch02_notebook_imports_reusable_helpers_from_src():
         if cell.get("cell_type") == "code"
     )
 
-    assert "from src.ch02_tutorial import (" in code_text
+    assert "from src.transport_reporting import (" in code_text
     for local_definition in [
         "def sorted_time_labels",
         "def subsample_indices",

@@ -50,7 +50,7 @@ def _diagnostics_frame() -> pd.DataFrame:
 
 
 def test_fig5_1_panel_tables_preserve_real_sources_and_sem():
-    from src.ch05_section51_figures import build_fig5_1_panel_tables
+    from src.timecourse_figures import build_fig5_1_panel_tables
 
     tables = build_fig5_1_panel_tables(_metrics_frame(), _diagnostics_frame())
 
@@ -91,7 +91,7 @@ def test_fig5_1_panel_tables_preserve_real_sources_and_sem():
 
 
 def test_fig5_1_panel_drawing_and_registration_are_reusable(tmp_path):
-    from src.ch05_section51_figures import (
+    from src.timecourse_figures import (
         build_fig5_1_panel_tables,
         draw_fig5_1_panels,
         draw_fig5_1_hidden_t2_panel,

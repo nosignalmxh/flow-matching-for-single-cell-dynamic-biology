@@ -1,9 +1,9 @@
 variant,variant_family,boundary,training_steps_total,sampling,velocity_jump_mean_l2_mean,velocity_jump_mean_l2_std,n_seeds
 pairwise_local_bridges_6000,pairwise,t1,6000,local_pairwise,8.032818158467611,0.02541054352016327,3
-shared_adjacent_only_6000,shared_adjacent,t1,6000,uniform_adjacent,8.135408083597818,0.04660641662808121,3
-shared_skip_adj2_skip1_9000,shared_skip,t1,9000,adjacent_total_2_3_skip_total_1_3,9.12261931101481,0.11790211128348373,3
-shared_skip_uniform_6000,shared_skip,t1,6000,uniform_adjacent_skip,5.79080867767334,0.14523403307133256,3
+shared_adjacent_only_6000,shared_adjacent,t1,6000,uniform_adjacent,8.135409355163574,0.04660600718234657,3
+shared_skip_adj2_skip1_9000,shared_skip,t1,9000,adjacent_total_2_3_skip_total_1_3,9.122618357340494,0.11790305118209564,3
+shared_skip_uniform_6000,shared_skip,t1,6000,uniform_adjacent_skip,5.790808995564778,0.14523359913165496,3
 pairwise_local_bridges_6000,pairwise,t3,6000,local_pairwise,8.657238006591797,0.09585286015108962,3
-shared_adjacent_only_6000,shared_adjacent,t3,6000,uniform_adjacent,4.8057786623636884,0.016313351722340858,3
-shared_skip_adj2_skip1_9000,shared_skip,t3,9000,adjacent_total_2_3_skip_total_1_3,4.451229254404704,0.2176370527340162,3
-shared_skip_uniform_6000,shared_skip,t3,6000,uniform_adjacent_skip,2.2642017205556235,0.19129300193197535,3
+shared_adjacent_only_6000,shared_adjacent,t3,6000,uniform_adjacent,4.8057786623636884,0.0163143155197586,3
+shared_skip_adj2_skip1_9000,shared_skip,t3,9000,adjacent_total_2_3_skip_total_1_3,4.451229413350423,0.21763757623796215,3
+shared_skip_uniform_6000,shared_skip,t3,6000,uniform_adjacent_skip,2.264202038447062,0.1912930198142369,3

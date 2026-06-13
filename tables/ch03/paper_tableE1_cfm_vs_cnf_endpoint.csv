@@ -1,3 +1,3 @@
 Method,Objective,Uses ODE,Steps,Batch,Time (s),NFE/step,MMD (20D) ↓,Sliced W2 (20D) ↓,Mode
-CFM,local velocity regression 20D,no,80,64,0.2,1.0,0.0346,0.89,QUICK diagnostic
-CNF-Endpoint,endpoint mse after adjoint ode solve 20D,yes,80,64,3.86,46.0,0.2542,1.493,QUICK diagnostic
+CFM,local velocity regression 20D,no,80,64,0.31,1.0,0.0346,0.89,QUICK diagnostic
+CNF-Endpoint,endpoint mse after adjoint ode solve 20D,yes,80,64,8.17,46.0,0.2542,1.493,QUICK diagnostic

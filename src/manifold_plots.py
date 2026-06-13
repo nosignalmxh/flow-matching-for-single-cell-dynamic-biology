@@ -8,14 +8,17 @@ import numpy as np
 import pandas as pd
 
 from .artifacts import sample_rows
-from .ch04_tutorial_data import CH04_PALETTE, METHOD_COLORS, METHOD_LABELS, REP_PAIR_QUANTILES, REP_TRAJ_QUANTILES, display_ch04_figure, save_ch04_figure
-
-def method_label(method: str) -> str:
-    return METHOD_LABELS.get(str(method), str(method).replace("_", " "))
-
-
-def method_color(method: str) -> str:
-    return METHOD_COLORS.get(str(method), "0.35")
+from .manifold_data import (
+    CH04_PALETTE,
+    METHOD_COLORS,
+    METHOD_LABELS,
+    REP_PAIR_QUANTILES,
+    REP_TRAJ_QUANTILES,
+    display_ch04_figure,
+    method_color,
+    method_label,
+    save_ch04_figure,
+)
 
 def phate_limits(*arrays, pad_fraction: float = 0.055):
     pts = np.vstack([np.asarray(a, dtype=float)[:, :2] for a in arrays])

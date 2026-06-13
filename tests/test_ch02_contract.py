@@ -8,7 +8,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RUNNER_PATH = PROJECT_ROOT / "scripts" / "run_ch02_distribution_transport.py"
 NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "02_distribution_transport_before_fm.ipynb"
-TUTORIAL_HELPER_PATH = PROJECT_ROOT / "src" / "ch02_tutorial.py"
+TUTORIAL_HELPER_PATH = PROJECT_ROOT / "src" / "transport_reporting.py"
 
 
 def _load_runner():

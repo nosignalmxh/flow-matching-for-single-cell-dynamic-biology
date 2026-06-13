@@ -11,14 +11,14 @@ import pandas as pd
 
 from .artifacts import (
     display_saved_figure,
-    remember_source as remember_artifact_source,
-    resolve_required_artifact as resolve_artifact,
-    safe_relpath as artifact_safe_relpath,
+    remember_source,
+    resolve_required_artifact,
+    safe_relpath,
     save_csv,
     save_figure_formats,
     save_json,
 )
-from .ch04_tutorial_data import CH04_PALETTE, load_eb_data as load_ch04_eb_data
+from .manifold_data import CH04_PALETTE, load_eb_data
 from .metrics import mmd_rbf, sliced_w2
 from .ot import compute_cost_matrix, coupling_diagnostics, sample_from_plan, sinkhorn_plan
 
@@ -60,24 +60,6 @@ class FinalFigurePackage:
     manifest: pd.DataFrame
 
 
-def load_eb_data(
-    path: str | Path,
-    *,
-    source_time: str = "1",
-    target_time: str = "2",
-    out_dir: str | Path | None = None,
-    max_cells_per_time: int | None = None,
-    seed: int = 42,
-) -> dict:
-    return load_ch04_eb_data(
-        path,
-        source_time=source_time,
-        target_time=target_time,
-        out_dir=out_dir,
-        max_cells_per_time=max_cells_per_time,
-        seed=seed,
-    )
-
 
 def save_figure(fig, fig_dir: str | Path, filename: str, close: bool = True) -> Path:
     import matplotlib.pyplot as plt
@@ -112,17 +94,6 @@ def display_final_png(final_fig_dir: str | Path, stem: str, width: int | None = 
 def display_ch04_png(fig_dir: str | Path, filename: str, width: int | None = None) -> Path:
     return display_saved_figure(Path(fig_dir) / filename, width=width)
 
-
-def safe_relpath(path: str | Path, root: str | Path) -> str:
-    return artifact_safe_relpath(path, root=root)
-
-
-def resolve_required_artifact(filename: str | Path, *, preferred_dirs=(), search_root: str | Path | None = None) -> Path:
-    return resolve_artifact(filename, preferred_dirs=preferred_dirs, search_root=search_root)
-
-
-def remember_source(sources: dict[str, str], name: str, path: str | Path, *, root: str | Path) -> Path:
-    return remember_artifact_source(sources, name, path, root=root)
 
 
 def ordered_state_pivot(frame: pd.DataFrame, *, value_col: str, time_order, bin_order) -> pd.DataFrame:

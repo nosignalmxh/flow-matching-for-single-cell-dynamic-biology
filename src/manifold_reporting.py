@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from .ch04_tutorial_data import (
+from .manifold_data import (
     CH04_PALETTE,
     METHOD_COLORS,
     METHOD_LABELS,
@@ -16,7 +16,7 @@ from .ch04_tutorial_data import (
     save_ch04_figure,
     write_artifact_manifest,
 )
-from .ch04_tutorial_plots import (
+from .manifold_plots import (
     add_local_arrows,
     apply_phate_axes,
     draw_eb_background,
@@ -41,14 +41,14 @@ from .ch04_tutorial_plots import (
     select_representatives_by_quantile,
     selected_pair_frame,
 )
-from .ch04_tutorial_runtime import (
+from .manifold_runtime import (
     Ch04VelocityMLP,
     PlanPairSampler,
     midpoint_direction_dispersion,
     train_or_load_model,
     train_reflow_round,
 )
-from .ch04_manifold_diagnostics import (
+from .manifold_diagnostics import (
     build_endpoint_graph_grid,
     candidate_path_diagnostics,
     density_scorer,
@@ -60,7 +60,7 @@ from .ch04_manifold_diagnostics import (
     select_diagnostic_pairs,
     stats_for_selected_pairs,
 )
-from .ch04_state_space_figures import (
+from .state_space_figures import (
     NEW_SMALL_FIGURES,
     SMALL_FIGURE_DEPENDENCIES,
     axis_limits,
@@ -75,7 +75,7 @@ from .ch04_state_space_figures import (
     representative_sources_from_plan,
     save_small_figure,
 )
-from .ch04_sampling_depth_tutorial import (
+from .sampling_depth_reporting import (
     FINAL_FIGURE_CLAIMS,
     FINAL_FORMATS,
     WfrfmGrowthDelta,

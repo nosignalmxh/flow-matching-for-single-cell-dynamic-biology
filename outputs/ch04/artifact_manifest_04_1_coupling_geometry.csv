@@ -23,8 +23,8 @@ figures/ch04/fig4_3_reflow_nfe_error_summary.png,figure,True,74886
 figures/ch04/fig4_2_random_vs_ot_endpoint_fit_summary.png,figure,True,129213
 outputs/ch04/eb_data_summary.json,table_or_json,True,1266
 outputs/ch04/exp1_metrics.csv,table_or_json,True,782
-outputs/ch04/table4_A_sinkhorn_epsilon_ablation.csv,table_or_json,True,1395
-outputs/ch04/tableA_4_1_minibatch_ablation.csv,table_or_json,True,484
+outputs/ch04/table4_A_sinkhorn_epsilon_ablation.csv,table_or_json,True,1394
+outputs/ch04/tableA_4_1_minibatch_ablation.csv,table_or_json,True,485
 outputs/ch04/table4_1_reflow_ablation.csv,table_or_json,True,942
 outputs/ch04/table4_1_path_geometry_diagnostics.csv,table_or_json,True,1282
 outputs/ch04/cache/exp1_eb_couplings.npz,dependency,True,152674346

@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-import os
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 import numpy as np
 import pandas as pd
 
+from .utils import resolve_project_root
 from .artifacts import (
     display_saved_figure,
     display_saved_figures,
@@ -117,21 +117,6 @@ class Ch03ArtifactTracker:
         for path in paths:
             _append_unique(self.paper_tables_written, self.rel(path))
         return paths
-
-
-def resolve_project_root(start: str | Path | None = None) -> Path:
-    start_path = Path(start or os.environ.get("PROJECT_ROOT", Path.cwd())).resolve()
-    candidates = [start_path, *start_path.parents]
-    candidates.extend(
-        [
-            Path("/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology"),
-            Path("/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology"),
-        ]
-    )
-    for candidate in candidates:
-        if (candidate / "src" / "models.py").exists() and (candidate / "notebooks").exists():
-            return candidate.resolve()
-    raise FileNotFoundError(f"Could not locate project root from {start_path}")
 
 
 def make_ch03_context(project_root: str | Path | None = None) -> Ch03Context:

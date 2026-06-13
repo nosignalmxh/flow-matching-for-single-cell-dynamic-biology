@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import partial
 import json
 import os
 from pathlib import Path
@@ -8,6 +9,8 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+
+from .utils import resolve_project_root as _resolve_project_root
 
 from .artifacts import json_ready, save_csv, save_json
 
@@ -34,21 +37,9 @@ def parse_seed_list(value: str) -> list[int]:
     return seeds
 
 
-def resolve_project_root(start: str | Path | None = None) -> Path:
-    start_path = Path(start or os.environ.get("PROJECT_ROOT", Path.cwd())).resolve()
-    candidates = [start_path, *start_path.parents]
-    candidates.extend(
-        [
-            Path.cwd().resolve(),
-            Path.cwd().resolve().parent,
-            Path("/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology"),
-            Path("/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology"),
-        ]
-    )
-    for candidate in candidates:
-        if (candidate / "src" / "ch05_experiments.py").exists():
-            return candidate.resolve()
-    raise FileNotFoundError(f"Could not locate project root from {start_path}")
+
+
+resolve_project_root = partial(_resolve_project_root, markers=("src/single_cell_experiments.py",))
 
 
 def ensure_ch05_dirs(project_root: str | Path) -> tuple[Path, Path, Path]:

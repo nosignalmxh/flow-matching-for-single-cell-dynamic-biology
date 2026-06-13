@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from .artifacts import display_saved_figure, save_figure_formats
-from .ch04_tutorial_data import CH04_PALETTE
+from .manifold_data import CH04_PALETTE
 from .graph_paths import extract_path_indices
 from .ot import sample_from_plan
 

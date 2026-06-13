@@ -13,7 +13,7 @@ NOTEBOOK = PROJECT_ROOT / "notebooks" / "04_3_sampling_depth_and_claim_boundarie
 
 
 def test_wfrfm_sampling_helpers_summarize_mass_convention_outputs(tmp_path: Path):
-    from src.ch04_sampling_depth_tutorial import (
+    from src.sampling_depth_reporting import (
         make_wfrfm_agreement_summary,
         make_wfrfm_growth_delta_grid,
         resolve_wfrfm_output_suffix,
@@ -50,7 +50,7 @@ def test_wfrfm_sampling_helpers_summarize_mass_convention_outputs(tmp_path: Path
 
 
 def test_final_figure_package_manifest_validates_figures_and_sources(tmp_path: Path):
-    from src.ch04_sampling_depth_tutorial import FINAL_FIGURE_CLAIMS, write_final_figure_package
+    from src.sampling_depth_reporting import FINAL_FIGURE_CLAIMS, write_final_figure_package
 
     final_fig_dir = tmp_path / "figures" / "new3"
     final_fig_dir.mkdir(parents=True)
@@ -76,7 +76,7 @@ def test_final_figure_package_manifest_validates_figures_and_sources(tmp_path: P
 
 
 def test_bridge_sampling_diagnostic_preserves_sampling_depth_contract():
-    from src.ch04_sampling_depth_tutorial import bridge_sampling_diagnostic
+    from src.sampling_depth_reporting import bridge_sampling_diagnostic
 
     pcs_all = np.asarray(
         [
@@ -171,7 +171,7 @@ def test_sampling_depth_notebook_uses_src_helpers_instead_of_long_local_blocks()
     code_sources = ["".join(cell.get("source", [])) for cell in payload["cells"] if cell.get("cell_type") == "code"]
     code_text = "\n".join(code_sources)
 
-    assert "from src.ch04_sampling_depth_tutorial import" in code_text
+    assert "from src.sampling_depth_reporting import" in code_text
     assert "def save_pub_figure(" not in code_text
     assert "def load_eb_data(" not in code_text
     assert "def bridge_sampling_diagnostic(" not in code_text

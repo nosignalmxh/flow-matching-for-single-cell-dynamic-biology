@@ -27,7 +27,7 @@ def _function(tree: ast.AST, name: str) -> ast.FunctionDef:
 
 
 def test_ch02_figure_helpers_preserve_padding_and_display_return_contracts():
-    tree = _source_tree("src/ch02_tutorial.py")
+    tree = _source_tree("src/transport_reporting.py")
 
     save_fig_both = _function(tree, "save_fig_both")
     calls = [
@@ -49,8 +49,8 @@ def test_ch02_figure_helpers_preserve_padding_and_display_return_contracts():
     assert not any(isinstance(node, ast.Return) for node in ast.walk(show_saved_png))
 
 
-def test_ch05_display_saved_figure_lives_in_src_and_returns_displayed_path():
-    tree = _source_tree("src/ch05_sciplex_tutorial.py")
-    display_saved_figure = _function(tree, "display_saved_figure")
-    returns = [node for node in ast.walk(display_saved_figure) if isinstance(node, ast.Return)]
+def test_ch05_display_figure_output_lives_in_src_and_returns_displayed_path():
+    tree = _source_tree("src/perturbation_reporting.py")
+    display_figure_output = _function(tree, "display_figure_output")
+    returns = [node for node in ast.walk(display_figure_output) if isinstance(node, ast.Return)]
     assert len(returns) == 1

@@ -81,6 +81,7 @@ def test_tutorial_notebooks_display_their_saved_figures_inline():
             "display(Image(",
             "display_saved_figure(",
             "display_saved_figures(",
+            "display_figure_output(",
             "display_png(",
         ]
         assert any(marker in code_text for marker in display_markers), filename

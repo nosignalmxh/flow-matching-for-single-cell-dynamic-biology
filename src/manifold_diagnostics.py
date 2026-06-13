@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from .artifacts import save_figure_formats
-from .ch04_tutorial_data import CH04_PALETTE
+from .manifold_data import CH04_PALETTE
 from .graph_paths import (
     build_endpoint_knn_graph_grid,
     extract_path_indices,

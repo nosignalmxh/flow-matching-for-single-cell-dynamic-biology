@@ -8,7 +8,7 @@ import pytest
 
 
 def test_load_eb_data_standardizes_pc20_and_writes_summary(tmp_path: Path):
-    from src.ch04_tutorial import load_eb_data
+    from src.manifold_reporting import load_eb_data
 
     pcs = np.arange(30 * 25, dtype=np.float32).reshape(30, 25)
     phate = np.column_stack([np.linspace(0.0, 1.0, 30), np.linspace(2.0, 3.0, 30)]).astype(np.float32)
@@ -36,7 +36,7 @@ def test_load_eb_data_standardizes_pc20_and_writes_summary(tmp_path: Path):
 
 
 def test_select_representatives_by_quantile_is_deterministic_and_unique():
-    from src.ch04_tutorial import select_representatives_by_quantile
+    from src.manifold_reporting import select_representatives_by_quantile
 
     selected = select_representatives_by_quantile(
         np.asarray([0.0, 2.0, 4.0, 8.0, 16.0]),
@@ -48,7 +48,7 @@ def test_select_representatives_by_quantile_is_deterministic_and_unique():
 
 
 def test_fit_pc_to_phate_mapper_uses_distance_weighted_neighbors():
-    from src.ch04_tutorial import fit_pc_to_phate_mapper
+    from src.manifold_reporting import fit_pc_to_phate_mapper
 
     pcs = np.asarray([[0.0], [1.0], [2.0]], dtype=np.float32)
     phate = np.asarray([[0.0, 0.0], [10.0, 0.0], [20.0, 0.0]], dtype=np.float32)
@@ -62,7 +62,7 @@ def test_fit_pc_to_phate_mapper_uses_distance_weighted_neighbors():
 
 
 def test_fate_conditioned_plan_is_row_balanced_and_label_aware():
-    from src.ch04_tutorial import fate_conditioned_plan
+    from src.manifold_reporting import fate_conditioned_plan
 
     X0 = np.asarray([[0.0], [10.0]], dtype=np.float32)
     X1 = np.asarray([[0.1], [9.9], [20.0]], dtype=np.float32)
@@ -77,7 +77,7 @@ def test_fate_conditioned_plan_is_row_balanced_and_label_aware():
 
 
 def test_load_toy_snapshots_casts_time_to_float(tmp_path: Path):
-    from src.ch04_tutorial import load_toy_snapshots
+    from src.manifold_reporting import load_toy_snapshots
 
     path = tmp_path / "toy.csv"
     path.write_text("time,state_1,state_2,fate_label\n0.5,1,2,a\n1.0,3,4,b\n", encoding="utf-8")
@@ -89,7 +89,7 @@ def test_load_toy_snapshots_casts_time_to_float(tmp_path: Path):
 
 
 def test_midpoint_direction_dispersion_reports_chord_statistics():
-    from src.ch04_tutorial import midpoint_direction_dispersion
+    from src.manifold_reporting import midpoint_direction_dispersion
 
     X0 = np.asarray([[0.0, 0.0], [1.0, 0.0]], dtype=np.float32)
     X1 = np.asarray([[0.0, 1.0], [1.0, 1.0]], dtype=np.float32)
@@ -108,7 +108,7 @@ def test_midpoint_direction_dispersion_reports_chord_statistics():
 
 
 def test_build_artifact_manifest_records_run_config_and_missing_files(tmp_path: Path):
-    from src.ch04_tutorial import build_artifact_manifest
+    from src.manifold_reporting import build_artifact_manifest
 
     fig_dir = tmp_path / "figures"
     out_dir = tmp_path / "outputs"
@@ -139,7 +139,7 @@ def test_build_artifact_manifest_records_run_config_and_missing_files(tmp_path: 
 def test_train_or_load_model_rejects_checkpoint_metadata_mismatch(tmp_path: Path):
     import torch
 
-    from src.ch04_tutorial import train_or_load_model
+    from src.manifold_reporting import train_or_load_model
 
     X0 = np.zeros((2, 3), dtype=np.float32)
     X1 = np.ones((2, 3), dtype=np.float32)
@@ -164,7 +164,7 @@ def test_train_or_load_model_rejects_checkpoint_metadata_mismatch(tmp_path: Path
 def test_train_or_load_model_rejects_architecture_metadata_mismatch(tmp_path: Path):
     import torch
 
-    from src.ch04_tutorial import train_or_load_model
+    from src.manifold_reporting import train_or_load_model
 
     X0 = np.zeros((2, 3), dtype=np.float32)
     X1 = np.ones((2, 3), dtype=np.float32)
@@ -200,13 +200,13 @@ def test_train_or_load_model_rejects_architecture_metadata_mismatch(tmp_path: Pa
 
 
 def test_training_helper_import_can_replace_notebook_local_definition():
-    from src.ch04_tutorial import train_or_load_model
+    from src.manifold_reporting import train_or_load_model
 
     assert callable(train_or_load_model)
 
 
 def test_plot_metric_bar_grid_smoke(tmp_path: Path):
-    from src.ch04_tutorial import plot_metric_bar_grid
+    from src.manifold_reporting import plot_metric_bar_grid
 
     table = pd.DataFrame(
         {

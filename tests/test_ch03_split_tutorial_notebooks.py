@@ -243,7 +243,7 @@ def test_ch03_manifest_contracts_are_explicit_not_summary_only():
 
 
 def test_ch03_shared_tutorial_helpers_are_generic(tmp_path):
-    from src import ch03_tutorial as tutorial
+    from src import flow_matching_reporting as tutorial
 
     for name in [
         "json_ready",
@@ -273,7 +273,7 @@ def test_ch03_toy_helpers_are_extracted_and_callable():
     torch = pytest.importorskip("torch")
     import matplotlib.pyplot as plt
 
-    from src import ch03_tutorial as tutorial
+    from src import flow_matching_reporting as tutorial
 
     X0, components = tutorial.make_eight_gaussians(n=96, seed=11)
     X1 = tutorial.make_single_gaussian(n=96, seed=12)
@@ -349,7 +349,7 @@ def test_ch03_eb20d_main_helpers_are_extracted_and_callable():
     torch = pytest.importorskip("torch")
     import matplotlib.pyplot as plt
 
-    from src import ch03_tutorial as tutorial
+    from src import flow_matching_reporting as tutorial
 
     X0 = np.linspace(-1.0, 1.0, 80, dtype=np.float32).reshape(20, 4)
     X1 = X0 + 0.5
@@ -428,7 +428,7 @@ def test_ch03_eb20d_ablation_helpers_are_extracted_and_callable(tmp_path):
     torch = pytest.importorskip("torch")
     import matplotlib.pyplot as plt
 
-    from src import ch03_tutorial as tutorial
+    from src import flow_matching_reporting as tutorial
 
     context = tutorial.Ch03Context(
         project_root=tmp_path,
@@ -500,7 +500,7 @@ def test_ch03_eb20d_ablation_helpers_are_extracted_and_callable(tmp_path):
 
 
 def test_format_solver_diagnostics_paper_table_rounds_and_labels():
-    from src import ch03_tutorial as tutorial
+    from src import flow_matching_reporting as tutorial
 
     solver_table = pd.DataFrame(
         [

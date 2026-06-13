@@ -58,7 +58,7 @@ def _minimal_summary_frame() -> pd.DataFrame:
 
 
 def test_section51_tutorial_helpers_are_generic_and_reusable(tmp_path):
-    from src import ch05_section51_tutorial as tutorial
+    from src import timecourse_reporting as tutorial
 
     for name in [
         "Section51Config",
@@ -120,7 +120,7 @@ def test_section51_notebook_is_tutorial_style_and_keeps_core_experiment_visible(
         assert required_core_step in text
 
     assert "display_png(figure_path)" in text
-    assert "from src.ch05_section51_figures import" in text
+    assert "from src.timecourse_figures import" in text
     assert "_fig5_1_metric_table" not in text
     assert "_fig5_1_draw_metric_bars" not in text
     assert "_fig5_1_crop_white_margin" not in text

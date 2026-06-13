@@ -70,7 +70,7 @@ def test_ch05_2_notebook_declares_only_perturbation_artifacts():
 
 def test_ch05_2_defaults_to_full_section52_reproduction_config():
     setup = _setup_cell()
-    helper_source = (PROJECT_ROOT / "src" / "ch05_sciplex_tutorial.py").read_text()
+    helper_source = (PROJECT_ROOT / "src" / "perturbation_reporting.py").read_text()
 
     assert "CONFIG = ch05s.make_section52_config(PROJECT_ROOT)" in setup
     assert "DEFAULT_SEED = CONFIG.default_seed" in setup
