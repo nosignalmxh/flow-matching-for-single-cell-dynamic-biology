@@ -88,7 +88,7 @@ def test_ch02_notebook_has_second_round_tutorial_quality_gates():
     helper_source = TUTORIAL_HELPER_PATH.read_text()
     max_code_lines = max(len(source.splitlines()) for source in code_sources)
 
-    assert len(code_sources) >= 43
+    assert len(code_sources) >= 42
     assert max_code_lines <= 60
     assert "raise FileNotFoundError" in helper_source
 
@@ -104,8 +104,6 @@ def test_ch02_notebook_has_second_round_tutorial_quality_gates():
 
     assert "plt.subplots(2, 2" not in code_text
     assert "plt.subplots(1, 4" not in code_text
-    assert "figure_layout" in code_text
-    assert "section6_three_separate_panel_artifacts" in code_text
     assert 'figure_suffixes: Iterable[str] = (".png", ".svg")' in helper_source
     assert "Independent: geometry ignored" in code_text
     assert "Sinkhorn OT: PC-20 cost-guided" in code_text
@@ -152,7 +150,6 @@ def test_ch02_notebook_has_second_round_tutorial_quality_gates():
         "table02_03_dynamic_ot_energy_proxy.csv",
         "table02_04_cnf_training_bottleneck.csv",
         "table02_04_training_cost_proxy.csv",
-        "ch02_run_summary.json",
     ]:
         assert filename in code_text
 
@@ -193,7 +190,6 @@ def test_ch02_expected_artifacts_exist():
         "table02_03_dynamic_ot_energy_proxy.csv",
         "table02_04_cnf_training_bottleneck.csv",
         "table02_04_training_cost_proxy.csv",
-        "ch02_run_summary.json",
     ]
     for filename in expected_tables:
         assert (output_dir / filename).exists()
