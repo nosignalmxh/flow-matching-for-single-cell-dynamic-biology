@@ -26,6 +26,7 @@ data/toy_branching_snapshots/observed_2d_schema.csv
 
 # Local development-only checks.
 tests/
+skills/
 
 # Generated caches, checkpoints, and executed notebook copies.
 archive/
