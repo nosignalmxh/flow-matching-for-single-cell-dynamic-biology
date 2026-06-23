@@ -110,6 +110,19 @@ def test_artifact_helpers_resolve_and_remember_sources(tmp_path):
     assert sources == {"diagnostic": "outputs/ch04/diagnostic.csv"}
 
 
+def test_utils_resolve_project_root_accepts_reorganized_src(monkeypatch, tmp_path):
+    from src.utils import resolve_project_root
+
+    project = tmp_path / "project"
+    nested = project / "notebooks" / "scratch"
+    (project / "src" / "core").mkdir(parents=True)
+    nested.mkdir(parents=True)
+    monkeypatch.chdir(nested)
+
+    assert not (project / "src" / "models.py").exists()
+    assert resolve_project_root() == project.resolve()
+
+
 def test_flow_runtime_euler_helpers_preserve_zero_velocity():
     torch = pytest.importorskip("torch")
 

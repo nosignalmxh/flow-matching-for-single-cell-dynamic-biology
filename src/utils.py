@@ -44,7 +44,7 @@ def save_table(table, path: str | Path) -> Path:
     return path
 
 
-def resolve_project_root(start: str | Path | None = None, *, markers=("src/models.py", "notebooks")) -> Path:
+def resolve_project_root(start: str | Path | None = None, *, markers=("src", "notebooks")) -> Path:
     start_path = Path(start or os.environ.get("PROJECT_ROOT", Path.cwd())).resolve()
     raw_candidates = [
         start_path,

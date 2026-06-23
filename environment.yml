@@ -1,6 +1,9 @@
 name: fmdb
 channels:
+  - pytorch
+  - nvidia
   - conda-forge
+  - nodefaults
 dependencies:
   - python=3.10
   - numpy
@@ -10,14 +13,17 @@ dependencies:
   - matplotlib
   - seaborn
   - pyyaml
+  - tabulate
   - tqdm
   - jupyterlab
   - ipykernel
   - pytest
-  - pytorch
+  - pytorch::pytorch
+  - pytorch::pytorch-cuda=12.4
   - pip
   - pip:
       - anndata
+      - phate
       - scanpy
       - pot
       - torchdiffeq

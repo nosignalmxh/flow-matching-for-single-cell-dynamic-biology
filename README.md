@@ -30,20 +30,39 @@ toy assets through the shared `src/` loaders.
 - Keep paper claims tied to generated artifacts in `figures/`, `tables/`, and
   `outputs/`.
 
+## Environment
+
+Create the project GPU environment from the checked-in conda file:
+
+```bash
+conda env create -f environment.yml
+conda activate fmdb
+python -m ipykernel install --user --name fmdb --display-name fmdb
+```
+
+The environment name is defined in `environment.yml` as `fmdb`. The file pins
+PyTorch with the CUDA 12.4 runtime (`pytorch-cuda=12.4`), which is intended for
+running the notebook validations on NVIDIA GPUs with a compatible host driver.
+After activation, a quick CUDA sanity check is:
+
+```bash
+python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.version.cuda)"
+```
+
 ## Quick Smoke Test
 
-    python -m pytest -q
-
-The base conda environment used for the current v2 artifacts is
-`/home/xmabs/anaconda3/bin/python`.
+```bash
+python -m pytest -q
+```
 
 ## How to reproduce paper figures
 
 Steps in order:
-1. `conda env create -f environment.yml && conda activate flow_matching_db`
-2. `python -m ipykernel install --user --name flow_matching_db --display-name flow_matching_db`
-3. `python -m pytest -q` (helper smoke tests)
-4. Run notebooks in dependency order (see notebooks/INDEX.md):
+1. `conda env create -f environment.yml` (creates the GPU-enabled `fmdb` env)
+2. `conda activate fmdb`
+3. `python -m ipykernel install --user --name fmdb --display-name fmdb`
+4. `python -m pytest -q` (helper smoke tests)
+5. Run notebooks in dependency order (see notebooks/INDEX.md):
    ```bash
    QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter2_distribution_transport.ipynb
    QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter3_1_flow_matching_from_scratch.ipynb
@@ -55,7 +74,7 @@ Steps in order:
    QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter5_1_timecourse_suite.ipynb
    QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter5_2_perturbation_sciplex.ipynb
    ```
-5. Generated figures/tables land in `figures/`, `tables/`, `outputs/`.
+6. Generated figures/tables land in `figures/`, `tables/`, `outputs/`.
 
 Notes:
 - `QUICK_MODE=1` (default) is the fast smoke run; full mode (`QUICK_MODE=0`) produces paper-grade figures.
