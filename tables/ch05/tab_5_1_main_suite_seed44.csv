@@ -1,9 +1,7 @@
 experiment,seed,variant,variant_family,target,training_steps_total,sampling,pairs,pair_weights,mmd_rbf,sliced_w2,centroid_l2
-EB Section 5.1 main suite,44,pairwise_local_bridges_6000,pairwise,hidden_t2,6000,local_pairwise,0-1;1-3;3-4,,0.08487795239653229,0.41801605978574224,1.1484763622283936
-EB Section 5.1 main suite,44,pairwise_local_bridges_6000,pairwise,seen_t4,6000,local_pairwise,0-1;1-3;3-4,,0.005137553502378878,0.14436641816623197,0.45168355107307434
-EB Section 5.1 main suite,44,shared_adjacent_only_6000,shared_adjacent,hidden_t2,6000,uniform_adjacent,0-1;1-3;3-4,uniform,0.04956653395974564,0.32979327622072435,1.0462566614151
-EB Section 5.1 main suite,44,shared_adjacent_only_6000,shared_adjacent,seen_t4,6000,uniform_adjacent,0-1;1-3;3-4,uniform,0.023440493351310265,0.4677742514976396,1.2312610149383545
-EB Section 5.1 main suite,44,shared_skip_uniform_6000,shared_skip,hidden_t2,6000,uniform_adjacent_skip,0-1;1-3;3-4;0-3;1-4;0-4,uniform,0.054828893473985674,0.37651991140461627,1.2396947145462036
-EB Section 5.1 main suite,44,shared_skip_uniform_6000,shared_skip,seen_t4,6000,uniform_adjacent_skip,0-1;1-3;3-4;0-3;1-4;0-4,uniform,0.014124541962952042,0.32251766114712743,0.9276400804519653
-EB Section 5.1 main suite,44,shared_skip_adj2_skip1_9000,shared_skip,hidden_t2,9000,adjacent_total_2_3_skip_total_1_3,0-1;1-3;3-4;0-3;1-4;0-4,"0.222222,0.222222,0.222222,0.111111,0.111111,0.111111",0.07851645246597372,0.3999985387628381,1.2428960800170898
-EB Section 5.1 main suite,44,shared_skip_adj2_skip1_9000,shared_skip,seen_t4,9000,adjacent_total_2_3_skip_total_1_3,0-1;1-3;3-4;0-3;1-4;0-4,"0.222222,0.222222,0.222222,0.111111,0.111111,0.111111",0.005968359013309221,0.17095095034214597,0.4387962520122528
+EB Section 5.1 main suite,44,pairwise_local_bridges_6000,pairwise,hidden_t2,6000,local_pairwise,0-1;1-3;3-4,,0.0848779523965322,0.4180160597857422,1.1484763622283936
+EB Section 5.1 main suite,44,pairwise_local_bridges_6000,pairwise,seen_t4,6000,local_pairwise,0-1;1-3;3-4,,0.0051375535023788,0.1443664181662319,0.4516835510730743
+EB Section 5.1 main suite,44,shared_adjacent_only_6000,shared_adjacent,hidden_t2,6000,uniform_adjacent,0-1;1-3;3-4,uniform,0.0495665339597456,0.3297932762207243,1.0462566614151
+EB Section 5.1 main suite,44,shared_adjacent_only_6000,shared_adjacent,seen_t4,6000,uniform_adjacent,0-1;1-3;3-4,uniform,0.0234404933513102,0.4677742514976396,1.2312610149383545
+EB Section 5.1 main suite,44,shared_skip_adj2_skip1_9000,shared_skip,hidden_t2,9000,adjacent_total_2_3_skip_total_1_3,0-1;1-3;3-4;0-3;1-4;0-4,"0.222222,0.222222,0.222222,0.111111,0.111111,0.111111",0.0785164524659737,0.3999985387628381,1.2428960800170898
+EB Section 5.1 main suite,44,shared_skip_adj2_skip1_9000,shared_skip,seen_t4,9000,adjacent_total_2_3_skip_total_1_3,0-1;1-3;3-4;0-3;1-4;0-4,"0.222222,0.222222,0.222222,0.111111,0.111111,0.111111",0.0059683590133092,0.1709509503421459,0.4387962520122528

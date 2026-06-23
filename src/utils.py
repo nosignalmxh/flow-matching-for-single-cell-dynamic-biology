@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import random
 from pathlib import Path
 
@@ -41,3 +42,28 @@ def save_table(table, path: str | Path) -> Path:
     else:
         pd.DataFrame(table).to_csv(path, index=False)
     return path
+
+
+def resolve_project_root(start: str | Path | None = None, *, markers=("src/models.py", "notebooks")) -> Path:
+    start_path = Path(start or os.environ.get("PROJECT_ROOT", Path.cwd())).resolve()
+    raw_candidates = [
+        start_path,
+        *start_path.parents,
+        Path.cwd().resolve(),
+        Path.cwd().resolve().parent,
+        Path("/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology"),
+        Path("/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology"),
+    ]
+    candidates = []
+    seen = set()
+    for candidate in raw_candidates:
+        key = str(candidate)
+        if key not in seen:
+            seen.add(key)
+            candidates.append(candidate)
+    marker_paths = tuple(Path(marker) for marker in markers)
+    for candidate in candidates:
+        if all((candidate / marker).exists() for marker in marker_paths):
+            return candidate.resolve()
+    marker_text = ", ".join(str(marker) for marker in marker_paths)
+    raise FileNotFoundError(f"Could not locate project root from {start_path}; required markers: {marker_text}")

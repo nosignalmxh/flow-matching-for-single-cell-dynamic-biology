@@ -7,9 +7,9 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT_PATH = PROJECT_ROOT / "scripts" / "prepare_ch05_sciplex_cache.py"
 CH04_SPLIT_NOTEBOOK_PATHS = [
-    PROJECT_ROOT / "notebooks" / "04_1_coupling_geometry.ipynb",
-    PROJECT_ROOT / "notebooks" / "04_2_state_space_representation_assumptions.ipynb",
-    PROJECT_ROOT / "notebooks" / "04_3_sampling_depth_and_claim_boundaries.ipynb",
+    PROJECT_ROOT / "notebooks" / "chapter4_1_coupling_geometry.ipynb",
+    PROJECT_ROOT / "notebooks" / "chapter4_2_state_space_assumptions.ipynb",
+    PROJECT_ROOT / "notebooks" / "chapter4_3_sampling_depth.ipynb",
 ]
 
 

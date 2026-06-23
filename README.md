@@ -36,3 +36,28 @@ toy assets through the shared `src/` loaders.
 
 The base conda environment used for the current v2 artifacts is
 `/home/xmabs/anaconda3/bin/python`.
+
+## How to reproduce paper figures
+
+Steps in order:
+1. `conda env create -f environment.yml && conda activate flow_matching_db`
+2. `python -m ipykernel install --user --name flow_matching_db --display-name flow_matching_db`
+3. `python -m pytest -q` (helper smoke tests)
+4. Run notebooks in dependency order (see notebooks/INDEX.md):
+   ```bash
+   QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter2_distribution_transport.ipynb
+   QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter3_1_flow_matching_from_scratch.ipynb
+   QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter3_2_eb_flow_matching.ipynb
+   QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter3_3_eb_ablations.ipynb
+   QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter4_1_coupling_geometry.ipynb
+   QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter4_2_state_space_assumptions.ipynb
+   QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter4_3_sampling_depth.ipynb
+   QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter5_1_timecourse_suite.ipynb
+   QUICK_MODE=0 jupyter nbconvert --to notebook --execute notebooks/chapter5_2_perturbation_sciplex.ipynb
+   ```
+5. Generated figures/tables land in `figures/`, `tables/`, `outputs/`.
+
+Notes:
+- `QUICK_MODE=1` (default) is the fast smoke run; full mode (`QUICK_MODE=0`) produces paper-grade figures.
+- `SMOKE_MODE=1` is even smaller and intended for CI only.
+- Each notebook is independently runnable as long as its upstream chapter artifacts/caches exist (see notebooks/INDEX.md).

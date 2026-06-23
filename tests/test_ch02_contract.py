@@ -7,7 +7,9 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RUNNER_PATH = PROJECT_ROOT / "scripts" / "run_ch02_distribution_transport.py"
-NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "02_distribution_transport_before_fm.ipynb"
+NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "chapter2_distribution_transport.ipynb"
+RETIRED_NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "02_distribution_transport_before_fm.ipynb"
+TUTORIAL_HELPER_PATH = PROJECT_ROOT / "src" / "visualization" / "transport.py"
 
 
 def _load_runner():
@@ -45,6 +47,11 @@ def test_ch02_runner_declares_required_artifacts_and_boundaries():
     assert "Flow Matching training is deferred to Chapter 3" in boundary_text
 
 
+def test_ch02_canonical_notebook_exists_and_retired_active_copy_is_removed():
+    assert NOTEBOOK_PATH.exists()
+    assert not RETIRED_NOTEBOOK_PATH.exists()
+
+
 def test_ch02_notebook_is_paper_facing_reproducibility_notebook():
     payload = json.loads(NOTEBOOK_PATH.read_text())
     assert payload["nbformat"] >= 4
@@ -71,7 +78,7 @@ def test_ch02_notebook_is_paper_facing_reproducibility_notebook():
     ]:
         assert required in code_text
     assert "table02_01_coupling_diagnostics.csv" in text
-    assert "fig02_04d_pc20_action_proxy" in text
+    assert "fig02_04c_pc20_action_proxy" in text
     assert "table02_04_cnf_training_bottleneck.csv" in text
     assert "table02_optional_ot_cost_sensitivity.csv" in text
 
@@ -84,39 +91,70 @@ def test_ch02_notebook_has_second_round_tutorial_quality_gates():
         if cell.get("cell_type") == "code"
     ]
     code_text = "\n".join(code_sources)
+    helper_source = TUTORIAL_HELPER_PATH.read_text()
     max_code_lines = max(len(source.splitlines()) for source in code_sources)
 
-    assert len(code_sources) >= 45
+    assert 27 <= len(code_sources) <= 31
+    assert len(payload["cells"]) <= 50
     assert max_code_lines <= 60
-    assert "expected_figures" in code_text
-    assert "expected_tables" in code_text
-    assert "expected_outputs" in code_text
-    assert "raise FileNotFoundError" in code_text
+    assert "raise FileNotFoundError" in helper_source
+    assert "from src.tutorial_init import apply_tutorial_plot_style, bootstrap, make_save_and_show" in code_text
+    assert "save_and_show = make_save_and_show(" in code_text
+    assert "save_and_show(fig," in code_text
+    assert code_text.count("save_fig_both(") == 1
+    assert "show_saved_png(" not in code_text
+    assert "bridge_panels = [" in code_text
+    assert "timing_panels = [" not in code_text
+    assert "fig02_03a_paths" not in code_text
+    assert "fig02_03b_paths" not in code_text
+    assert "fig02_03c_paths" not in code_text
+    assert "fig02_03d_paths" not in code_text
+    assert "fig02_06_paths" not in code_text
+    assert "fig02_06b_mean_step_time" not in code_text
+    assert "fig02_06c_velocity_evaluations_per_step" not in code_text
+    assert "fig02_06d_total_wall_clock_time" not in code_text
+    assert "concept_boundaries =" not in code_text
+    assert "representation_roles = pd.DataFrame" not in code_text
+    assert "dynamic_colors\n" not in code_text
+    assert "cnf_training_bottleneck_scalars" not in code_text
 
     display_markers = [
         "display(Image(",
         "display_saved_figure(",
         "display_saved_figures(",
         "display_png(",
+        "show_saved_png(",
+        "make_save_and_show(",
     ]
     assert any(marker in code_text for marker in display_markers)
-    assert "display_table(" in code_text or "display(" in code_text
+    assert "pd.DataFrame(" in code_text or "show_saved_png(" in code_text
 
     assert "plt.subplots(2, 2" not in code_text
     assert "plt.subplots(1, 4" not in code_text
-    assert "panel_level_one_plot_per_cell" in code_text
-    assert 'for suffix in [".png", ".svg"]' in code_text
+    assert 'figure_suffixes: Iterable[str] = (".png", ".svg")' in helper_source
     assert "Independent: geometry ignored" in code_text
     assert "Sinkhorn OT: PC-20 cost-guided" in code_text
     assert "Coarse transport blocks" in code_text
     assert "cells grouped by PHATE-1 quantiles" in code_text
     assert "coarse_pi" in code_text
     assert "row_normalized_coarse_pi" in code_text
+
+
+def test_ch02_notebook_uses_shared_save_and_show_signature():
+    payload = json.loads(NOTEBOOK_PATH.read_text())
+    code_text = "\n".join(
+        "".join(cell.get("source", [])) for cell in payload["cells"] if cell.get("cell_type") == "code"
+    )
+
+    assert "save_and_show = make_save_and_show(" in code_text
+    assert "save_and_show(fig, fig_dir," not in code_text
     assert "row-normalized coupling mass" in code_text
     assert "each row sums to 1 source group" in code_text
     assert "Epsilon trade-off" in code_text
     assert "PHATE display only" in code_text
     assert "chosen eps=0.05" in code_text
+    assert "fig02_06a_cnf_control_flow" not in code_text
+    assert "box_specs" not in code_text
     assert "A. Independent" not in code_text
     assert "B. Sinkhorn" not in code_text
     assert "C. Soft" not in code_text
@@ -133,16 +171,20 @@ def test_ch02_notebook_has_second_round_tutorial_quality_gates():
         "fig02_03b_straight_bridges",
         "fig02_03c_curved_bridges",
         "fig02_03d_stochastic_bridge_samples",
-        "fig02_04a_eb_empirical_density_path",
-        "fig02_04b_adjacent_time_barycentric_ot",
-        "fig02_04c_economical_vs_detour_paths",
-        "fig02_04d_pc20_action_proxy",
-        "fig02_06a_cnf_control_flow",
-        "fig02_06b_mean_step_time",
-        "fig02_06c_velocity_evaluations_per_step",
-        "fig02_06d_total_wall_clock_time",
+        "fig02_04a_fixed_endpoint_pairs",
+        "fig02_04b_path_construction_fixed_endpoints",
+        "fig02_04c_pc20_action_proxy",
     ]:
         assert stem in code_text
+
+    for column_name in [
+        "mean_time_per_step_ms",
+        "median_time_per_step_ms",
+        "nfe_per_step_mean",
+        "total_wall_time_sec",
+        "final_distribution_mmd",
+    ]:
+        assert column_name in code_text
 
     for filename in [
         "table02_01_coupling_diagnostics.csv",
@@ -151,8 +193,6 @@ def test_ch02_notebook_has_second_round_tutorial_quality_gates():
         "table02_03_dynamic_ot_energy_proxy.csv",
         "table02_04_cnf_training_bottleneck.csv",
         "table02_04_training_cost_proxy.csv",
-        "ch02_run_summary.json",
-        "artifact_manifest_02_distribution_transport_before_fm.csv",
     ]:
         assert filename in code_text
 
@@ -175,14 +215,9 @@ def test_ch02_expected_artifacts_exist():
         "fig02_03b_straight_bridges",
         "fig02_03c_curved_bridges",
         "fig02_03d_stochastic_bridge_samples",
-        "fig02_04a_eb_empirical_density_path",
-        "fig02_04b_adjacent_time_barycentric_ot",
-        "fig02_04c_economical_vs_detour_paths",
-        "fig02_04d_pc20_action_proxy",
-        "fig02_06a_cnf_control_flow",
-        "fig02_06b_mean_step_time",
-        "fig02_06c_velocity_evaluations_per_step",
-        "fig02_06d_total_wall_clock_time",
+        "fig02_04a_fixed_endpoint_pairs",
+        "fig02_04b_path_construction_fixed_endpoints",
+        "fig02_04c_pc20_action_proxy",
     ]
     for stem in runner_figure_stems + notebook_panel_figure_stems:
         assert (figure_dir / f"{stem}.png").exists()
@@ -195,8 +230,6 @@ def test_ch02_expected_artifacts_exist():
         "table02_03_dynamic_ot_energy_proxy.csv",
         "table02_04_cnf_training_bottleneck.csv",
         "table02_04_training_cost_proxy.csv",
-        "ch02_run_summary.json",
-        "artifact_manifest_02_distribution_transport_before_fm.csv",
     ]
     for filename in expected_tables:
         assert (output_dir / filename).exists()
@@ -222,6 +255,14 @@ def test_ch02_runner_uses_final_figure_annotations():
 def test_ch02_notebook_documents_final_claim_boundaries_and_numbers():
     payload = json.loads(NOTEBOOK_PATH.read_text())
     text = "".join("".join(cell.get("source", [])) for cell in payload["cells"])
+    assert "Figure 2.2 and Table 2.1" in text
+    assert "approximately 46%" in text
+    assert "Figure 2.3" in text
+    assert "same endpoint pairs can support different intermediate paths" in text
+    assert "Figure 2.4 and Table 2.3" in text
+    assert "detour/straight action ratio" in text
+    assert "Table 2.4" in text
+    assert "NFE=16" in text
     assert (
         "Sinkhorn OT at ε=0.05 reduces expected PC-20 transport cost from 299.6 "
         "to 161.4, while concentrating mass relative to the independent coupling. "
@@ -239,3 +280,21 @@ def test_ch02_notebook_documents_final_claim_boundaries_and_numbers():
     assert "Flow Matching loss" not in text
     assert "full likelihood CNF training" not in text
     assert "25x" not in text
+
+
+def test_ch02_notebook_uses_narrative_markdown_instead_of_template_labels():
+    payload = json.loads(NOTEBOOK_PATH.read_text())
+    text = "".join("".join(cell.get("source", [])) for cell in payload["cells"])
+
+    for label in [
+        "**Claim Boundary.**",
+        "**Panel Output.**",
+        "**Caption.**",
+        "**Helper Boundary.**",
+        "**Final Chapter Boundary.**",
+        "Claim Boundary.",
+        "Panel Output.",
+        "Helper Boundary.",
+        "Final Chapter Boundary.",
+    ]:
+        assert label not in text

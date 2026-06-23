@@ -1,4 +1,4 @@
-| Method       | Objective                                | Uses ODE   |   Steps |   Batch |   Time (s) |   NFE/step |   MMD (20D) ↓ |   Sliced W2 (20D) ↓ | Mode             |
-|:-------------|:-----------------------------------------|:-----------|--------:|--------:|-----------:|-----------:|--------------:|--------------------:|:-----------------|
-| CFM          | local velocity regression 20D            | no         |      80 |      64 |       0.22 |          1 |        0.0346 |               0.89  | QUICK diagnostic |
-| CNF-Endpoint | endpoint mse after adjoint ode solve 20D | yes        |      80 |      64 |       3.71 |         46 |        0.2542 |               1.493 | QUICK diagnostic |
+| Method             | Objective                                               | Uses ODE   |   Steps |   Batch |   Time (s) |   ms/update |   NFE/update |   Slowdown |   Val MSE (20D) |   MMD (20D) ↓ |   Sliced W2 (20D) ↓ | Mode                      |
+|:-------------------|:--------------------------------------------------------|:-----------|--------:|--------:|-----------:|------------:|-------------:|-----------:|----------------:|--------------:|--------------------:|:--------------------------|
+| FM                 | local velocity regression fixed OT pairs 20D            | no         |     600 |      64 |       3.33 |         5.5 |            1 |        1   |           6.734 |        0.0134 |               0.539 | QUICK compute-quality run |
+| CNF ODE rtol=0.001 | endpoint mse after adjoint ode solve fixed OT pairs 20D | yes        |     600 |      64 |      45.17 |        75.3 |           20 |       13.6 |           9.073 |        0.0702 |               0.877 | QUICK compute-quality run |

@@ -268,27 +268,10 @@
     "tables/ch05/tab_5_1_main_suite_diag.csv",
     "tables/ch05/tab_5_1_main_suite_diag_summary.csv",
     "tables/ch05/tab_5_1_main_text_results.csv",
-    "figures/ch05/fig_5_1_main_suite.png",
-    "figures/ch05/fig_5_1_A_time_pair_designs.png",
-    "figures/ch05/fig_5_1_A_time_pair_designs.pdf",
-    "figures/ch05/fig_5_1_B_hidden_t2_recovery.png",
-    "figures/ch05/fig_5_1_B_hidden_t2_recovery.pdf",
-    "figures/ch05/fig_5_1_C_seen_t4_rollout.png",
-    "figures/ch05/fig_5_1_C_seen_t4_rollout.pdf",
-    "figures/ch05/fig_5_1_D_velocity_jump.png",
-    "figures/ch05/fig_5_1_D_velocity_jump.pdf",
-    "figures/ch05/fig_5_1_main_suite_preview.png",
-    "figures/ch05/fig_5_1_main_suite_preview.pdf",
     "figures/ch05/fig5_1_time_pair_designs.png",
-    "figures/ch05/fig5_1_time_pair_designs.pdf",
     "figures/ch05/fig5_1_hidden_t2_recovery.png",
-    "figures/ch05/fig5_1_hidden_t2_recovery.pdf",
     "figures/ch05/fig5_1_seen_t4_rollout.png",
-    "figures/ch05/fig5_1_seen_t4_rollout.pdf",
-    "figures/ch05/fig5_1_velocity_jump.png",
-    "figures/ch05/fig5_1_velocity_jump.pdf",
-    "figures/ch05/fig5_1_combined.png",
-    "figures/ch05/fig5_1_combined.pdf"
+    "figures/ch05/fig5_1_velocity_jump.png"
   ],
   "finite_metric_checks": {
     "eb_diag": true,
@@ -1197,8 +1180,7 @@
     "does_skip_2to1_beat_adjacent_only_on_seen_t4": true,
     "does_skip_2to1_beat_pairwise_on_hidden_t2": true,
     "does_skip_2to1_degrade_hidden_t2_vs_adjacent_only": true,
-    "figure": "figures/ch05/fig_5_1_main_suite.png",
-    "figure_5_1_redrawn_error_bars": "Quantitative panels use mean \u00b1 SEM across seed-level rows from tab_5_1_main_suite.csv and tab_5_1_main_suite_diag.csv.",
+    "figure_5_1_redrawn_error_bars": "Quantitative panels use mean +/- SEM across seed-level rows from tab_5_1_main_suite.csv and tab_5_1_main_suite_diag.csv.",
     "figure_5_1_redrawn_missing_entries": [],
     "figure_5_1_redrawn_panel_sources": [
       {
@@ -1223,15 +1205,9 @@
       }
     ],
     "figure_5_1_redrawn_panels": {
-      "fig5_1_combined_pdf": "figures/ch05/fig5_1_combined.pdf",
-      "fig5_1_combined_png": "figures/ch05/fig5_1_combined.png",
-      "fig5_1_hidden_t2_recovery_pdf": "figures/ch05/fig5_1_hidden_t2_recovery.pdf",
       "fig5_1_hidden_t2_recovery_png": "figures/ch05/fig5_1_hidden_t2_recovery.png",
-      "fig5_1_seen_t4_rollout_pdf": "figures/ch05/fig5_1_seen_t4_rollout.pdf",
       "fig5_1_seen_t4_rollout_png": "figures/ch05/fig5_1_seen_t4_rollout.png",
-      "fig5_1_time_pair_designs_pdf": "figures/ch05/fig5_1_time_pair_designs.pdf",
       "fig5_1_time_pair_designs_png": "figures/ch05/fig5_1_time_pair_designs.png",
-      "fig5_1_velocity_jump_pdf": "figures/ch05/fig5_1_velocity_jump.pdf",
       "fig5_1_velocity_jump_png": "figures/ch05/fig5_1_velocity_jump.png"
     },
     "hidden_t2_main_comparison": [
@@ -1245,9 +1221,9 @@
         "section": "5.1",
         "source_row_id": "pairwise_local_bridges_6000|hidden_t2|mmd_rbf",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.0025156360563813244,
+        "std": 0.002515635024701712,
         "target_or_boundary": "hidden_t2",
-        "value": 0.08363380213735323
+        "value": 0.0836338031019948
       },
       {
         "claim_part": "hidden_t2_main_comparison",
@@ -1259,9 +1235,9 @@
         "section": "5.1",
         "source_row_id": "pairwise_local_bridges_6000|hidden_t2|sliced_w2",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.008338130064296631,
+        "std": 0.008338128077136412,
         "target_or_boundary": "hidden_t2",
-        "value": 0.40845179470794873
+        "value": 0.4084517961011345
       },
       {
         "claim_part": "hidden_t2_main_comparison",
@@ -1273,9 +1249,9 @@
         "section": "5.1",
         "source_row_id": "shared_adjacent_only_6000|hidden_t2|mmd_rbf",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.006032663497185092,
+        "std": 0.006032679472582792,
         "target_or_boundary": "hidden_t2",
-        "value": 0.05650196890919412
+        "value": 0.056501977445557884
       },
       {
         "claim_part": "hidden_t2_main_comparison",
@@ -1287,9 +1263,9 @@
         "section": "5.1",
         "source_row_id": "shared_adjacent_only_6000|hidden_t2|sliced_w2",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.02398737816260374,
+        "std": 0.023987170192130456,
         "target_or_boundary": "hidden_t2",
-        "value": 0.3559965139626448
+        "value": 0.3559964411838988
       },
       {
         "claim_part": "hidden_t2_main_comparison",
@@ -1301,9 +1277,9 @@
         "section": "5.1",
         "source_row_id": "shared_skip_adj2_skip1_9000|hidden_t2|mmd_rbf",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.009651397462292934,
+        "std": 0.00965141271468821,
         "target_or_boundary": "hidden_t2",
-        "value": 0.06747890885640834
+        "value": 0.06747887936178702
       },
       {
         "claim_part": "hidden_t2_main_comparison",
@@ -1315,9 +1291,9 @@
         "section": "5.1",
         "source_row_id": "shared_skip_adj2_skip1_9000|hidden_t2|sliced_w2",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.013957632985753891,
+        "std": 0.013957642661755736,
         "target_or_boundary": "hidden_t2",
-        "value": 0.38430049454730986
+        "value": 0.3843003880505096
       }
     ],
     "hidden_t2_skip_tradeoff": [
@@ -1331,9 +1307,9 @@
         "section": "5.1",
         "source_row_id": "shared_adjacent_only_6000|hidden_t2|mmd_rbf",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.006032663497185092,
+        "std": 0.006032679472582792,
         "target_or_boundary": "hidden_t2",
-        "value": 0.05650196890919412
+        "value": 0.056501977445557884
       },
       {
         "claim_part": "hidden_t2_skip_tradeoff",
@@ -1345,9 +1321,9 @@
         "section": "5.1",
         "source_row_id": "shared_adjacent_only_6000|hidden_t2|sliced_w2",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.02398737816260374,
+        "std": 0.023987170192130456,
         "target_or_boundary": "hidden_t2",
-        "value": 0.3559965139626448
+        "value": 0.3559964411838988
       },
       {
         "claim_part": "hidden_t2_skip_tradeoff",
@@ -1359,9 +1335,9 @@
         "section": "5.1",
         "source_row_id": "shared_skip_adj2_skip1_9000|hidden_t2|mmd_rbf",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.009651397462292934,
+        "std": 0.00965141271468821,
         "target_or_boundary": "hidden_t2",
-        "value": 0.06747890885640834
+        "value": 0.06747887936178702
       },
       {
         "claim_part": "hidden_t2_skip_tradeoff",
@@ -1373,9 +1349,9 @@
         "section": "5.1",
         "source_row_id": "shared_skip_adj2_skip1_9000|hidden_t2|sliced_w2",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.013957632985753891,
+        "std": 0.013957642661755736,
         "target_or_boundary": "hidden_t2",
-        "value": 0.38430049454730986
+        "value": 0.3843003880505096
       }
     ],
     "main_text_results_table": "tables/ch05/tab_5_1_main_text_results.csv",
@@ -1391,9 +1367,9 @@
         "section": "5.1",
         "source_row_id": "shared_adjacent_only_6000|seen_t4|sliced_w2",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.13999086069539338,
+        "std": 0.1399916473751939,
         "target_or_boundary": "seen_t4",
-        "value": 0.3216044522433499
+        "value": 0.32160488287601646
       },
       {
         "claim_part": "seen_t4_long_horizon",
@@ -1405,9 +1381,9 @@
         "section": "5.1",
         "source_row_id": "shared_adjacent_only_6000|seen_t4|centroid_l2",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.3297485628479851,
+        "std": 0.3297498868863559,
         "target_or_boundary": "seen_t4",
-        "value": 0.9041801691055298
+        "value": 0.9041819373766581
       },
       {
         "claim_part": "seen_t4_long_horizon",
@@ -1419,9 +1395,9 @@
         "section": "5.1",
         "source_row_id": "shared_skip_adj2_skip1_9000|seen_t4|sliced_w2",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.038272885459024096,
+        "std": 0.03827379508029358,
         "target_or_boundary": "seen_t4",
-        "value": 0.21499841662660077
+        "value": 0.21499872899585304
       },
       {
         "claim_part": "seen_t4_long_horizon",
@@ -1433,9 +1409,9 @@
         "section": "5.1",
         "source_row_id": "shared_skip_adj2_skip1_9000|seen_t4|centroid_l2",
         "source_table": "tab_5_1_main_suite_summary.csv",
-        "std": 0.1950694339814511,
+        "std": 0.19507183345961593,
         "target_or_boundary": "seen_t4",
-        "value": 0.6638327340284983
+        "value": 0.6638323366641998
       },
       {
         "claim_part": "seen_t4_long_horizon",
@@ -1449,7 +1425,7 @@
         "source_table": "tab_5_1_main_suite_summary.csv",
         "std": NaN,
         "target_or_boundary": "seen_t4",
-        "value": 33.14818401086159
+        "value": 33.14817639795031
       },
       {
         "claim_part": "seen_t4_long_horizon",
@@ -1463,7 +1439,7 @@
         "source_table": "tab_5_1_main_suite_summary.csv",
         "std": NaN,
         "target_or_boundary": "seen_t4",
-        "value": 26.581807839780186
+        "value": 26.581995368077678
       }
     ],
     "summary_table": "tables/ch05/tab_5_1_main_suite_summary.csv",
@@ -1477,10 +1453,7 @@
       "shared_adjacent_only_t3": 4.81,
       "shared_skip_2to1_mean_t1_t3": 6.79,
       "shared_skip_2to1_t1": 9.12,
-      "shared_skip_2to1_t3": 4.45,
-      "shared_skip_uniform_mean_t1_t3": 4.03,
-      "shared_skip_uniform_t1": 5.79,
-      "shared_skip_uniform_t3": 2.26
+      "shared_skip_2to1_t3": 4.45
     },
     "velocity_jump_diagnostic_rows": [
       {
@@ -1535,9 +1508,9 @@
         "section": "5.1",
         "source_row_id": "shared_adjacent_only_6000|t1|velocity_jump_mean_l2",
         "source_table": "tab_5_1_main_suite_diag_summary.csv",
-        "std": 0.04660641662808121,
+        "std": 0.04660600718234657,
         "target_or_boundary": "t1",
-        "value": 8.135408083597818
+        "value": 8.135409355163574
       },
       {
         "claim_part": "velocity_jump_diagnostic",
@@ -1549,7 +1522,7 @@
         "section": "5.1",
         "source_row_id": "shared_adjacent_only_6000|t3|velocity_jump_mean_l2",
         "source_table": "tab_5_1_main_suite_diag_summary.csv",
-        "std": 0.016313351722340858,
+        "std": 0.0163143155197586,
         "target_or_boundary": "t3",
         "value": 4.8057786623636884
       },
@@ -1565,7 +1538,7 @@
         "source_table": "tab_5_1_main_suite_diag_summary.csv",
         "std": NaN,
         "target_or_boundary": "t1_t3_mean",
-        "value": 6.470593372980753
+        "value": 6.470594008763632
       },
       {
         "claim_part": "velocity_jump_diagnostic",
@@ -1577,9 +1550,9 @@
         "section": "5.1",
         "source_row_id": "shared_skip_adj2_skip1_9000|t1|velocity_jump_mean_l2",
         "source_table": "tab_5_1_main_suite_diag_summary.csv",
-        "std": 0.11790211128348373,
+        "std": 0.11790305118209564,
         "target_or_boundary": "t1",
-        "value": 9.12261931101481
+        "value": 9.122618357340494
       },
       {
         "claim_part": "velocity_jump_diagnostic",
@@ -1591,9 +1564,9 @@
         "section": "5.1",
         "source_row_id": "shared_skip_adj2_skip1_9000|t3|velocity_jump_mean_l2",
         "source_table": "tab_5_1_main_suite_diag_summary.csv",
-        "std": 0.2176370527340162,
+        "std": 0.21763757623796215,
         "target_or_boundary": "t3",
-        "value": 4.451229254404704
+        "value": 4.451229413350423
       },
       {
         "claim_part": "velocity_jump_diagnostic",
@@ -1607,49 +1580,7 @@
         "source_table": "tab_5_1_main_suite_diag_summary.csv",
         "std": NaN,
         "target_or_boundary": "t1_t3_mean",
-        "value": 6.786924282709757
-      },
-      {
-        "claim_part": "velocity_jump_diagnostic",
-        "display_value": "5.79",
-        "method_or_variant": "shared_skip_uniform_6000",
-        "metric": "velocity_jump_mean_l2",
-        "n_seeds": 3,
-        "note": "",
-        "section": "5.1",
-        "source_row_id": "shared_skip_uniform_6000|t1|velocity_jump_mean_l2",
-        "source_table": "tab_5_1_main_suite_diag_summary.csv",
-        "std": 0.14523403307133256,
-        "target_or_boundary": "t1",
-        "value": 5.79080867767334
-      },
-      {
-        "claim_part": "velocity_jump_diagnostic",
-        "display_value": "2.26",
-        "method_or_variant": "shared_skip_uniform_6000",
-        "metric": "velocity_jump_mean_l2",
-        "n_seeds": 3,
-        "note": "",
-        "section": "5.1",
-        "source_row_id": "shared_skip_uniform_6000|t3|velocity_jump_mean_l2",
-        "source_table": "tab_5_1_main_suite_diag_summary.csv",
-        "std": 0.19129300193197535,
-        "target_or_boundary": "t3",
-        "value": 2.2642017205556235
-      },
-      {
-        "claim_part": "velocity_jump_diagnostic",
-        "display_value": "4.03",
-        "method_or_variant": "shared_skip_uniform_6000",
-        "metric": "velocity_jump_mean_l2_mean_over_hand_offs",
-        "n_seeds": 3,
-        "note": "Mean of t1 and t3 hand-off jump means from tab_5_1_main_suite_diag_summary.csv.",
-        "section": "5.1",
-        "source_row_id": "shared_skip_uniform_6000|t1_t3_mean|velocity_jump_mean_l2",
-        "source_table": "tab_5_1_main_suite_diag_summary.csv",
-        "std": NaN,
-        "target_or_boundary": "t1_t3_mean",
-        "value": 4.027505199114482
+        "value": 6.786923885345459
       }
     ]
   },

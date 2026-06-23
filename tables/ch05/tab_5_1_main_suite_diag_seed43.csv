@@ -1,9 +1,7 @@
 experiment,seed,variant,variant_family,boundary,training_steps_total,sampling,velocity_jump_mean_l2
 EB Section 5.1 main suite,43,pairwise_local_bridges_6000,pairwise,t1,6000,local_pairwise,8.04004955291748
 EB Section 5.1 main suite,43,shared_adjacent_only_6000,shared_adjacent,t1,6000,uniform_adjacent,8.08213996887207
-EB Section 5.1 main suite,43,shared_skip_uniform_6000,shared_skip,t1,6000,uniform_adjacent_skip,5.908586502075195
 EB Section 5.1 main suite,43,shared_skip_adj2_skip1_9000,shared_skip,t1,9000,adjacent_total_2_3_skip_total_1_3,9.227290153503418
 EB Section 5.1 main suite,43,pairwise_local_bridges_6000,pairwise,t3,6000,local_pairwise,8.613982200622559
 EB Section 5.1 main suite,43,shared_adjacent_only_6000,shared_adjacent,t3,6000,uniform_adjacent,4.793934345245361
-EB Section 5.1 main suite,43,shared_skip_uniform_6000,shared_skip,t3,6000,uniform_adjacent_skip,2.3423635959625244
 EB Section 5.1 main suite,43,shared_skip_adj2_skip1_9000,shared_skip,t3,9000,adjacent_total_2_3_skip_total_1_3,4.63813591003418

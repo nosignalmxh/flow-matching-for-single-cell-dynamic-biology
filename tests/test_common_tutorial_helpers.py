@@ -57,10 +57,63 @@ def test_artifact_helpers_validate_arrays_paths_and_hashes(tmp_path):
         ensure_finite("bad", np.asarray([np.nan]))
 
 
+def test_artifact_helpers_save_figures_and_paper_tables(tmp_path):
+    import matplotlib.pyplot as plt
+
+    from src.artifacts import figure_paths_from_name, save_figure, save_figure_formats, save_paper_table
+
+    fig_dir = tmp_path / "figures"
+    png_path, pdf_path, stem = figure_paths_from_name(fig_dir, "example_plot.png")
+    assert stem == "example_plot"
+    assert png_path == fig_dir / "example_plot.png"
+    assert pdf_path == fig_dir / "example_plot.pdf"
+
+    fig, ax = plt.subplots()
+    ax.plot([0, 1], [1, 0])
+    saved_png = save_figure(fig, fig_dir, "example_plot.png", dpi=72, write_pdf=True)
+    plt.close(fig)
+    assert saved_png == png_path
+    assert png_path.exists() and png_path.stat().st_size > 0
+    assert pdf_path.exists() and pdf_path.stat().st_size > 0
+
+    fig2, ax2 = plt.subplots()
+    ax2.plot([0, 1], [0, 1])
+    multi_paths = save_figure_formats(fig2, fig_dir, "multi_format", formats=("png", "svg"), dpi=72, close=True)
+    assert [path.name for path in multi_paths] == ["multi_format.png", "multi_format.svg"]
+    assert all(path.exists() and path.stat().st_size > 0 for path in multi_paths)
+    assert not plt.fignum_exists(fig2.number)
+
+    csv_path, tex_path, md_path = save_paper_table(
+        tmp_path / "tables" / "summary",
+        pd.DataFrame({"metric": ["mmd"], "value": [0.125]}),
+    )
+    assert csv_path.read_text().splitlines()[0] == "metric,value"
+    assert "mmd" in tex_path.read_text()
+    assert "mmd" in md_path.read_text()
+
+
+def test_artifact_helpers_resolve_and_remember_sources(tmp_path):
+    from src.artifacts import remember_source, resolve_required_artifact, safe_relpath
+
+    project_root = tmp_path / "project"
+    nested = project_root / "outputs" / "ch04"
+    nested.mkdir(parents=True)
+    artifact = nested / "diagnostic.csv"
+    artifact.write_text("x,y\n1,2\n")
+
+    assert safe_relpath(artifact, root=project_root) == "outputs/ch04/diagnostic.csv"
+    assert resolve_required_artifact("diagnostic.csv", preferred_dirs=[], search_root=project_root) == artifact
+
+    sources = {}
+    remembered = remember_source(sources, "diagnostic", artifact, root=project_root)
+    assert remembered == artifact
+    assert sources == {"diagnostic": "outputs/ch04/diagnostic.csv"}
+
+
 def test_flow_runtime_euler_helpers_preserve_zero_velocity():
     torch = pytest.importorskip("torch")
 
-    from src.flow_runtime import coarse_step_error, make_time_batch, rollout_euler, trajectory_rollout
+    from src.experiments.flow_runtime import coarse_step_error, make_time_batch, rollout_euler, trajectory_rollout
 
     class ZeroVelocity(torch.nn.Module):
         def forward(self, x, t):

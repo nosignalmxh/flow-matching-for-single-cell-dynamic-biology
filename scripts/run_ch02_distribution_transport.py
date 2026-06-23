@@ -140,7 +140,7 @@ def _coupling_diagnostic_row(
     info: dict | None,
     cost_scale: float,
 ) -> dict:
-    from src.ot import coupling_diagnostics
+    from src.core.ot import coupling_diagnostics
 
     raw = coupling_diagnostics(pi, C_raw)
     norm = coupling_diagnostics(pi, C_norm)
@@ -279,7 +279,7 @@ def _run_exp1_static_ot(eb: dict, fig_dir: Path, out_dir: Path, artifact_base: P
     from matplotlib.colors import LogNorm
     from matplotlib.lines import Line2D
 
-    from src.ot import (
+    from src.core.ot import (
         compute_ot_coupling_from_cost,
         independent_coupling,
         pairwise_squared_distances,
@@ -495,9 +495,9 @@ def _run_exp1_static_ot(eb: dict, fig_dir: Path, out_dir: Path, artifact_base: P
 def _run_exp2_path_geometry(fig_dir: Path, out_dir: Path, artifact_base: Path, seed: int):
     import matplotlib.pyplot as plt
 
-    from src.ot import compute_ot_coupling_from_cost, pairwise_squared_distances, sample_pair_indices_from_coupling
-    from src.paths import curved_path, linear_path
-    from src.toy import make_y_branching_snapshots
+    from src.core.ot import compute_ot_coupling_from_cost, pairwise_squared_distances, sample_pair_indices_from_coupling
+    from src.core.paths import curved_path, linear_path
+    from src.data.toy import make_y_branching_snapshots
 
     toy = make_y_branching_snapshots(
         n_cells=400,
@@ -605,7 +605,7 @@ def _run_exp3_dynamic_ot(
 ):
     import matplotlib.pyplot as plt
 
-    from src.ot import compute_ot_coupling_from_cost, pairwise_squared_distances, sample_pair_indices_from_coupling
+    from src.core.ot import compute_ot_coupling_from_cost, pairwise_squared_distances, sample_pair_indices_from_coupling
 
     X_pc20 = np.asarray(eb["X_cost"], dtype=float)
     time_labels = eb["time"].astype(str)
@@ -798,8 +798,8 @@ def _run_exp4_training_proxy(fig_dir: Path, out_dir: Path, artifact_base: Path, 
     import matplotlib.pyplot as plt
     import torch
 
-    from src.metrics import mmd_rbf
-    from src.models import VelocityMLP
+    from src.evaluation.metrics import mmd_rbf
+    from src.core.models import VelocityMLP
     from src.utils import set_seed
 
     set_seed(seed)
@@ -951,9 +951,9 @@ def _run_optional_exp5_cost_sensitivity(
     artifact_base: Path,
     seed: int,
 ) -> dict:
-    from src.data import load_eb_timecourse_for_ch03
-    from src.metrics import coupling_l1_distance
-    from src.ot import compute_ot_coupling_from_cost, coupling_diagnostics, pairwise_squared_distances
+    from src.data.loading import load_eb_timecourse_for_ch03
+    from src.evaluation.metrics import coupling_l1_distance
+    from src.core.ot import compute_ot_coupling_from_cost, coupling_diagnostics, pairwise_squared_distances
 
     rng = np.random.default_rng(seed + 90)
     eb50 = load_eb_timecourse_for_ch03(
@@ -1011,7 +1011,7 @@ def run_ch02(quick_mode: bool = True, project_root: str | Path | None = None, se
     matplotlib.use("Agg", force=True)
     _set_plot_style()
 
-    from src.data import load_eb_timecourse_for_ch03
+    from src.data.loading import load_eb_timecourse_for_ch03
     from src.utils import ensure_dir, set_seed
 
     set_seed(seed)

@@ -50,7 +50,7 @@
       "time": "4"
     }
   ],
-  "source_path": "/home/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz",
+  "source_path": "/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz",
   "source_time": "1",
   "standardization": "mean/std fit on all EB snapshots in PC-20",
   "target_time": "2",

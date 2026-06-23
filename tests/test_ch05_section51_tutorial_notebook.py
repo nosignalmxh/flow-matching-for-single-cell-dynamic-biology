@@ -10,7 +10,8 @@ import pandas as pd
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "05_1_single_cell_timecourse_main_suite.ipynb"
+NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "chapter5_1_timecourse_suite.ipynb"
+RETIRED_NOTEBOOK_PATH = PROJECT_ROOT / "notebooks" / "05_1_single_cell_timecourse_main_suite.ipynb"
 BUILDER_PATH = PROJECT_ROOT / "scripts" / "build_ch05_section51_notebook.py"
 
 
@@ -29,36 +30,13 @@ def _notebook_code_lengths() -> list[int]:
     return lengths
 
 
-def _minimal_summary_frame() -> pd.DataFrame:
-    rows = []
-    for target in ["hidden_t2", "seen_t4"]:
-        for variant, family, steps, sampling in [
-            ("pairwise_local_bridges_6000", "pairwise", 6000, "local_pairwise"),
-            ("shared_adjacent_only_6000", "shared_adjacent", 6000, "uniform_adjacent"),
-            ("shared_skip_uniform_6000", "shared_skip", 6000, "uniform_adjacent_skip"),
-            ("shared_skip_adj2_skip1_9000", "shared_skip", 9000, "adjacent_total_2_3_skip_total_1_3"),
-        ]:
-            rows.append(
-                {
-                    "variant": variant,
-                    "variant_family": family,
-                    "target": target,
-                    "training_steps_total": steps,
-                    "sampling": sampling,
-                    "mmd_rbf_mean": 0.1,
-                    "mmd_rbf_std": 0.01,
-                    "sliced_w2_mean": 0.2,
-                    "sliced_w2_std": 0.02,
-                    "centroid_l2_mean": 0.3,
-                    "centroid_l2_std": 0.03,
-                    "n_seeds": 3,
-                }
-            )
-    return pd.DataFrame(rows)
+def test_section51_canonical_notebook_exists_and_retired_active_copy_is_removed():
+    assert NOTEBOOK_PATH.exists()
+    assert not RETIRED_NOTEBOOK_PATH.exists()
 
 
 def test_section51_tutorial_helpers_are_generic_and_reusable(tmp_path):
-    from src import ch05_section51_tutorial as tutorial
+    from src.experiments import timecourse_config as tutorial
 
     for name in [
         "Section51Config",
@@ -68,7 +46,6 @@ def test_section51_tutorial_helpers_are_generic_and_reusable(tmp_path):
         "json_ready",
         "save_json",
         "save_csv",
-        "build_main_suite_figure",
         "write_section51_artifacts",
         "display_png",
         "preview_frame",
@@ -85,10 +62,6 @@ def test_section51_tutorial_helpers_are_generic_and_reusable(tmp_path):
     assert json.loads(json_path.read_text()) == {"a": 2}
     assert pd.read_csv(csv_path).shape == (1, 1)
 
-    figure_path = tutorial.build_main_suite_figure(_minimal_summary_frame(), tmp_path)
-    assert figure_path.name == "fig_5_1_main_suite.png"
-    assert figure_path.exists()
-
 
 def test_section51_notebook_is_tutorial_style_and_keeps_core_experiment_visible():
     text = _notebook_text()
@@ -102,8 +75,7 @@ def test_section51_notebook_is_tutorial_style_and_keeps_core_experiment_visible(
         "## 7. Roll out predictions",
         "## 8. Compute endpoint metrics",
         "## 9. Compute hand-off diagnostics",
-        "## 12. Display Figure 5.1",
-        "## 14. Final audit",
+        "## 12. Redraw Figure 5.1 as independent paper panels",
     ]:
         assert required in text
 
@@ -119,14 +91,70 @@ def test_section51_notebook_is_tutorial_style_and_keeps_core_experiment_visible(
     ]:
         assert required_core_step in text
 
-    assert "display_png(figure_path)" in text
+    for forbidden in [
+        "fig_5_1_main_suite",
+        "fig5_1_combined",
+        "draw_fig5_1_combined_panel",
+        "display_png(figure_path)",
+    ]:
+        assert forbidden not in text
+
+    for expected_panel in [
+        "fig5_1_time_pair_designs.png",
+        "fig5_1_hidden_t2_recovery.png",
+        "fig5_1_seen_t4_rollout.png",
+        "fig5_1_velocity_jump.png",
+    ]:
+        assert expected_panel in text
+
+    assert "from src.tutorial_init import apply_tutorial_plot_style, bootstrap, make_save_and_show" in text
+    assert "save_and_show = make_save_and_show(" in text
+    assert "display_fn=save_and_show" in text
+    assert "display_fn=display_png" not in text
+    assert "from src.visualization.timecourse import" in text
+    assert "_fig5_1_metric_table" not in text
+    assert "_fig5_1_draw_metric_bars" not in text
+    assert "_fig5_1_crop_white_margin" not in text
     assert len(code_lengths) >= 18
     assert max(code_lengths) <= 90
+
+
+def test_section51_notebook_keeps_legacy_skip_rng_alignment_control():
+    text = _notebook_text()
+
+    uniform_variant = '"variant": "shared_skip_uniform_6000"'
+    weighted_variant = '"variant": "shared_skip_adj2_skip1_9000"'
+    assert uniform_variant in text
+    assert text.index(uniform_variant) < text.index(weighted_variant)
+
+    for required in [
+        "main_method_variants = [",
+        "analysis_specs = [",
+        "if spec[\"variant\"] in main_method_variants",
+        "for spec in analysis_specs:",
+    ]:
+        assert required in text
+
+
+def test_section51_notebook_explains_cfm_training_wrappers():
+    text = _notebook_text()
+
+    for required in [
+        "CFM velocity-regression training loop",
+        "_train_local_bridge",
+        "_train_global_bridge_model",
+        "cfm_loss_from_pairs",
+        "zero_grad",
+        "backward",
+        "step",
+    ]:
+        assert required in text
 
 
 def test_section51_builder_is_retired_and_does_not_write_notebook():
     source = BUILDER_PATH.read_text()
     assert "maintained directly" in source
+    assert "notebooks/chapter5_1_timecourse_suite.ipynb" in source
     assert "raise SystemExit" in source
     assert "nbf.write" not in source
     assert "new_notebook" not in source

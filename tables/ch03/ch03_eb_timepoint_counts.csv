@@ -1,6 +1,6 @@
 source,cost_embedding,plot_embedding,n_cost_dims,time,n_cells,selected_n_cells
-/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,0,2381,750
-/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,1,4163,750
-/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,2,3278,750
-/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,3,3665,750
-/import/home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,4,3332,750
+/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,0,2381,750
+/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,1,4163,750
+/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,2,3278,750
+/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,3,3665,750
+/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/flow_matching_for_dynamic_biology/data/trajectorynet_eb/eb_velocity_v5.npz,pcs,phate,20,4,3332,750

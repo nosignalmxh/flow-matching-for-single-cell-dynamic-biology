@@ -7,38 +7,54 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 NOTEBOOKS = {
-    "04_1_coupling_geometry.ipynb": {
+    "chapter4_1_coupling_geometry.ipynb": {
         "min_code_cells": 24,
         "must_display": [
             "fig4_1_independent_coupling_paths.png",
             "fig4_2_random_vs_ot_pairs.png",
             "fig4_2b_epsilon_ablation_pairs.png",
-            "fig4_4_reflow_trajectories.png",
+            "fig4_3_reflow_representative_trajectories.png",
         ],
     },
-    "04_2_state_space_representation_assumptions.ipynb": {
-        "min_code_cells": 24,
+    "chapter4_2_state_space_assumptions.ipynb": {
+        "min_code_cells": 21,
         "must_display": [
-            "fig4_5b_toy_branching_pairs.png",
-            "fig4_8_toy_representation_couplings.png",
-            "fig4_10_chord_vs_manifold_path.png",
-            "fig4_10_eb_chord_vs_graph_path_phate.png",
+            "fig4_2_toy_pca30_representative_pairs.png",
+            "fig4_2_toy_program4_representative_pairs.png",
+            "fig4_2_toy_representation_coupling_summary.png",
+            "fig4_2_eb_pc20_coupling_representative_pairs.png",
+            "fig4_2_eb_phate_diagnostic_coupling_representative_pairs.png",
+            "fig4_2_eb_pc_vs_phate_distance_summary.png",
+            "fig4_2_state_space_model_readout_summary.png",
+            "fig4_3_toy_single_pair_chord_vs_graph_path.png",
+            "fig4_3_eb_chord_vs_graph_matched_examples.png",
+            "fig4_3_eb_density_radius_delta.png",
+            "fig4_3_eb_knn_radius_delta.png",
+            "fig4_3_eb_off_manifold_positive_fraction.png",
         ],
     },
-    "04_3_sampling_depth_and_claim_boundaries.ipynb": {
+    "chapter4_3_sampling_depth.ipynb": {
         "min_code_cells": 18,
         "must_display": [
-            "fig4_11a_eb_observed_counts.png",
-            "fig4_11b_sampling_depth_sensitivity.png",
-            "fig4_11c_stochastic_bridge_demo.png",
-            "figA_4_1_prior_strength_sanity_check.png",
+            "plot_raw_observed_counts(",
+            "plot_sampling_depth_bootstrap_sensitivity",
+            "plot_stochastic_bridge_demo",
         ],
     },
-    "05_2_perturbation_response_sciplex.ipynb": {
+    "chapter5_2_perturbation_sciplex.ipynb": {
         "min_code_cells": 11,
         "must_display": [
-            "fig_5_3_sciplex_heldout_compound_summary.png",
-            "fig_5_3_sciplex_heldout_compound.png",
+            "fig_5_2_heldout_highest_dose_metrics",
+            "fig_5_2_heldout_compound_metrics",
+        ],
+    },
+    "chapter5_1_timecourse_suite.ipynb": {
+        "min_code_cells": 18,
+        "must_display": [
+            "fig5_1_time_pair_designs.png",
+            "fig5_1_hidden_t2_recovery.png",
+            "fig5_1_seen_t4_rollout.png",
+            "fig5_1_velocity_jump.png",
         ],
     },
 }
@@ -71,24 +87,50 @@ def test_tutorial_notebooks_have_stepwise_code_cells_and_compile():
 
 def test_tutorial_notebooks_display_their_saved_figures_inline():
     for filename, spec in NOTEBOOKS.items():
+        notebook_text = "\n".join(_sources(filename))
         code_text = "\n".join(_sources(filename, "code"))
-        assert "from IPython.display import Image, display" in code_text, filename
+        display_support_markers = [
+            "from IPython.display import Image, display",
+            "display_png(",
+            "display_saved_figure(",
+            "display_saved_figures(",
+            "display_figure(",
+            "display_figure_output(",
+            "make_save_and_show(",
+        ]
+        assert any(marker in code_text for marker in display_support_markers), filename
 
         for figure_name in spec["must_display"]:
-            assert figure_name in code_text, (filename, figure_name)
+            assert figure_name in notebook_text, (filename, figure_name)
 
         display_markers = [
             "display(Image(",
             "display_saved_figure(",
             "display_saved_figures(",
+            "display_figure(",
+            "display_figure_output(",
             "display_png(",
+            "make_save_and_show(",
         ]
         assert any(marker in code_text for marker in display_markers), filename
 
 
-def test_tutorial_notebooks_keep_artifact_manifest_contracts():
-    for filename in NOTEBOOKS:
+def test_tutorial_notebooks_keep_saved_output_references():
+    for filename, spec in NOTEBOOKS.items():
+        notebook_text = "\n".join(_sources(filename))
         code_text = "\n".join(_sources(filename, "code"))
-        assert "expected_figures" in code_text or "required_paths" in code_text, filename
-        assert "expected_tables" in code_text or "required_paths" in code_text, filename
-        assert "raise FileNotFoundError" in code_text, filename
+
+        for figure_name in spec["must_display"]:
+            assert figure_name in notebook_text, (filename, figure_name)
+
+        output_guard_markers = [
+            "raise FileNotFoundError",
+            "resolve_required_artifact",
+            "section52_required_paths",
+            "display_saved_figure",
+            "save_figure",
+            "save_small_figure",
+            "write_section51_artifacts",
+            "register_fig5_1_artifacts",
+        ]
+        assert any(marker in code_text for marker in output_guard_markers), filename

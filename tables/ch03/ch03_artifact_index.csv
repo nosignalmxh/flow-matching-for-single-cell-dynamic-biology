@@ -28,7 +28,7 @@ Fig E5 hist,figure,figures/ch03/figE5_straightness_hist.png,03_3,straightness,20
 Fig E5 trajectories,figure,figures/ch03/figE5_representative_trajectories_phate.png,03_3,straightness,PHATE display only,True,written,no,yes
 Fig E5 scatter,figure,figures/ch03/figE5_endpoint_distance_vs_straightness.png,03_3,straightness,Endpoint distance versus straightness,True,written,no,yes
 Table E5,table,tables/ch03/tableE5_trajectory_straightness.csv,03_3,straightness,Per-trajectory 20D straightness,True,written,no,yes
-Fig 3.1,figure,/import/home4/xmabs/flow_matching_for_dynamic_biology/tutorial_figure/ch03/fig03_01_training_vs_sampling_compute.png,manual,manual concept diagram,Manual/reference concept figure,True,external_local,no,no
-Fig 3.5,figure,/import/home4/xmabs/flow_matching_for_dynamic_biology/tutorial_figure/ch03/fig03_05_velocity_mlp_architecture.png,manual,manual concept diagram,Manual/reference concept figure,True,external_local,no,no
-Fig 3.6,figure,/import/home4/xmabs/flow_matching_for_dynamic_biology/tutorial_figure/ch03/fig03_06_minimal_cfm_training_loop.png,manual,manual concept diagram,Manual/reference concept figure,True,external_local,no,no
-Fig 3.11,figure,/import/home4/xmabs/flow_matching_for_dynamic_biology/tutorial_figure/ch03/fig03_11_cfm_extension_map.png,manual,manual concept diagram,Manual/reference concept figure,True,external_local,no,no
+Fig 3.1,figure,/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/tutorial_figure/ch03/fig03_01_training_vs_sampling_compute.png,manual,manual concept diagram,Manual/reference concept figure,True,external_local,no,no
+Fig 3.5,figure,/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/tutorial_figure/ch03/fig03_05_velocity_mlp_architecture.png,manual,manual concept diagram,Manual/reference concept figure,True,external_local,no,no
+Fig 3.6,figure,/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/tutorial_figure/ch03/fig03_06_minimal_cfm_training_loop.png,manual,manual concept diagram,Manual/reference concept figure,True,external_local,no,no
+Fig 3.11,figure,/import/macyang_home4/xmabs/flow_matching_for_dynamic_biology/tutorial_figure/ch03/fig03_11_cfm_extension_map.png,manual,manual concept diagram,Manual/reference concept figure,True,external_local,no,no

@@ -1,36 +1,16 @@
 {
-  "quick_mode": true,
-  "smoke_mode": false,
-  "device": "cuda",
-  "seed": 42,
-  "source_time": "0",
-  "target_time": "1",
-  "split_notebooks": [
-    "03_1_toy_flow_matching_from_scratch.ipynb",
-    "03_2_eb20d_main_flow_matching.ipynb",
-    "03_3_eb20d_baselines_ablations_and_claim_audit.ipynb"
-  ],
-  "eb_training_space": "20D PC X_cost",
-  "eb_visualization_space": "PHATE X_plot only",
-  "phate_used_for_training_or_metrics": false,
-  "toy_used_for_eb_claims": false,
-  "cnf_endpoint_completed": true,
-  "time_sampling_completed": true,
-  "capacity_ablation_completed": true,
-  "straightness_completed": true,
   "artifact_index_written": true,
-  "paper_ready_pass_completed": true,
-  "known_limitations": [
-    "QUICK_MODE diagnostic results need full rerun before final submission.",
-    "PHATE display uses kNN projection for generated samples.",
-    "CNF-Endpoint is endpoint-loss adjoint diagnostic, not FFJORD likelihood."
-  ],
+  "capacity_ablation_completed": true,
   "claim_boundaries": [
     "Solver comparison is a post-training numerical diagnostic for one trained EB CFM field.",
     "CNF-Endpoint is endpoint-loss adjoint training, not likelihood-based CNF or FFJORD evidence.",
     "Time sampling and capacity ablations are finite-budget diagnostics on the EB endpoint-pair task.",
     "Straightness is a 20D numerical path diagnostic, not an individual lineage certificate."
   ],
+  "cnf_endpoint_completed": true,
+  "device": "cuda",
+  "eb_training_space": "20D PC X_cost",
+  "eb_visualization_space": "PHATE X_plot only",
   "expected_code_figures": [
     "figures/ch03/fig03_10_nfe_vs_endpoint_error.png",
     "figures/ch03/figE1_cfm_vs_cnf_endpoint_training_cost.png",
@@ -44,14 +24,6 @@
     "figures/ch03/figE5_straightness_hist.png",
     "figures/ch03/figE5_representative_trajectories_phate.png",
     "figures/ch03/figE5_endpoint_distance_vs_straightness.png"
-  ],
-  "expected_tables": [
-    "tables/ch03/table03_01_solver_diagnostics.csv",
-    "tables/ch03/tableE1_cfm_vs_cnf_endpoint.csv",
-    "tables/ch03/tableE3_time_sampling_ablation.csv",
-    "tables/ch03/tableT2_training_hyperparams_capacity.csv",
-    "tables/ch03/tableE5_trajectory_straightness.csv",
-    "tables/ch03/ch03_artifact_index.csv"
   ],
   "expected_paper_tables": [
     "tables/ch03/paper_table03_01_solver_diagnostics.csv",
@@ -70,15 +42,43 @@
     "tables/ch03/paper_tableE5_trajectory_straightness_summary.md",
     "tables/ch03/paper_tableE5_trajectory_straightness_summary.tex"
   ],
+  "expected_tables": [
+    "tables/ch03/table03_01_solver_diagnostics.csv",
+    "tables/ch03/tableE1_cfm_vs_cnf_endpoint.csv",
+    "tables/ch03/tableE3_time_sampling_ablation.csv",
+    "tables/ch03/tableT2_training_hyperparams_capacity.csv",
+    "tables/ch03/tableE5_trajectory_straightness.csv",
+    "tables/ch03/ch03_artifact_index.csv"
+  ],
+  "known_limitations": [
+    "QUICK_MODE diagnostic results need full rerun before final submission.",
+    "PHATE display uses kNN projection for generated samples.",
+    "CNF-Endpoint is endpoint-loss adjoint diagnostic, not FFJORD likelihood."
+  ],
+  "paper_ready_pass_completed": true,
+  "phate_used_for_training_or_metrics": false,
+  "quick_mode": true,
+  "seed": 42,
   "skipped_items": [],
+  "smoke_mode": false,
+  "source_time": "0",
+  "split_notebooks": [
+    "03_1_toy_flow_matching_from_scratch.ipynb",
+    "03_2_eb20d_main_flow_matching.ipynb",
+    "03_3_eb20d_baselines_ablations_and_claim_audit.ipynb"
+  ],
+  "straightness_completed": true,
+  "target_time": "1",
+  "time_sampling_completed": true,
+  "toy_used_for_eb_claims": false,
   "validation_checks": {
-    "eb_training_state_dim_is_20": true,
-    "phate_state_dim_is_2_for_plots_only": true,
-    "main_model_cache_exists": true,
-    "solver_table_exists": true,
     "artifact_index_exists": true,
+    "eb_training_state_dim_is_20": true,
+    "main_model_cache_exists": true,
     "own_code_figures_written": true,
     "own_tables_written": true,
-    "paper_tables_written": true
+    "phate_state_dim_is_2_for_plots_only": true,
+    "solver_table_exists": true,
+    "tracker.paper_tables_written": true
   }
 }
