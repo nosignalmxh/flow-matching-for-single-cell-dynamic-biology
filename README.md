@@ -57,26 +57,3 @@ The environment uses Python 3.10, PyTorch with CUDA 12.4, and the scientific Pyt
 ## Data
 
 Small tutorial assets are kept under `data/`, including toy branching snapshots, EB time-course data, sci-Plex A549 inputs, and LINCS compound metadata. Large raw downloads, local caches, and regenerated artifacts are intentionally kept out of Git.
-
-## Reproducing Outputs
-
-Open the notebooks in Jupyter and run them in chapter order:
-
-```text
-chapter2
-  -> chapter3_1 -> chapter3_2 -> chapter3_3
-                 -> chapter4_1 -> chapter4_2 -> chapter4_3
-                            -> chapter5_1 -> chapter5_2
-```
-
-Most notebooks can be run interactively. Chapter 4 and Chapter 5 notebooks may take longer in full mode because they train models, compute optimal-transport couplings, or regenerate cached diagnostics.
-
-## Development Checks
-
-Run the focused tests from the repository root:
-
-```bash
-pytest tests
-```
-
-The tests check notebook structure, helper contracts, plotting/display assumptions, and selected reusable modules.
