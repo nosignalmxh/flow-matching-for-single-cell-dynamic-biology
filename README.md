@@ -5,6 +5,8 @@ Teaching code for the paper **Flow Matching for Single-Cell Dynamic Biology**.
 ## Repository Structure
 
 ```text
+configs/          YAML configs for reusable examples
+data/             tracked tutorial datasets and metadata used by notebooks
 notebooks/
   INDEX.md
   chapter2_distribution_transport.ipynb
@@ -18,17 +20,15 @@ notebooks/
   chapter5_2_perturbation_sciplex.ipynb
 
 src/
+  baselines/      compact baseline components used in tutorial comparisons
   core/           flow-matching losses, models, sampling, and OT helpers
   data/           dataset loaders and preprocessing utilities
   evaluation/     metrics and representation readouts
   experiments/    reusable experiment routines used by notebooks
   visualization/  plotting helpers for tutorial and paper figures
 
-configs/          YAML configs for reusable examples
-data/             small tracked tutorial datasets and metadata
-scripts/          command-line helpers for selected chapter outputs
-tests/            structural and helper tests for notebooks and src modules
-archive/          retired notebooks and historical build artifacts
+environment.yml   conda environment specification
+pyproject.toml    package metadata and test configuration
 ```
 
 Running the notebooks regenerates local `figures/`, `tables/`, and `outputs/` directories. These directories contain reproducible artifacts and caches rather than source files.
